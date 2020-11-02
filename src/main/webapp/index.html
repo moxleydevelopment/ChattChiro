@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+CIST 2931 - Team 3
+-->
+
+<html>
+    <head>
+        <title>ChattChiro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body >
+        <div id="index_container" class='container-fluid'>
+            <div class='row'>
+                <nav class="navbar navbar-light  col-12" style="background-color:rgba(12, 11, 95, 0.5);">
+                    <a class="navbar-brand">ChattChiro</a>
+                    <form class="form-inline">
+                      <button class="btn btn-danger my-2 my-sm-0" type="submit">Admin</button>
+                    </form>
+                 </nav>
+            </div> 
+            <div class='row align-items-center justify-content-center my-5'>
+                <p class='h2'>ChattChiro</p>
+                
+                
+            </div>
+             <div class='row align-items-center justify-content-center' >
+                 <div class="col-4" style="background-color:rgba(12, 11, 95, 0.5); border-radius: 15px 30px;">
+                     <form action="PatientLoginServletDB" method='post' class='card  border-0 bg-transparent text-white' >
+                        <div class='card-body my-5'>
+                            <div class="form-group">
+                              <label for="customerId">Customer ID</label>
+                              <input name='customerId' type="text" class="form-control" id="customerId" aria-describedby="customerId">
+                            </div>
+                            <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <a href="patients/patientregistration.jsp" class="btn btn-primary">Sign Up!</a>
+                        </div>
+                    </form>
+                 </div>
+   
+            </div>
+            
+        </div>
+       
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>
