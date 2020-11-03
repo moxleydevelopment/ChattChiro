@@ -1,5 +1,7 @@
 # Compiled class file
 *.class
+*.classpath
+*.project
 
 # Log file
 *.log
@@ -24,4 +26,7 @@ hs_err_pid*
 /target/
 
 .DS_Store
-.project
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.jdt.apt.core.prefs
+.settings/org.eclipse.core.resources.prefs
+.gitignore

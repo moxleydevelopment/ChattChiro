@@ -1,7 +1,7 @@
 package Business;
 
 /**
- * Nicholas Hall, Timothy Eolf, Donya Moxley, Jason Fleurival, Benjamin Ard
+ * Nicholas Hall, Timothy Wolf, Donya Moxley, Jason Fleurival, Benjamin Ard
  * CIST2931
  * Team 3
  * ChattChiro - Chiropractors
@@ -18,10 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author donyamoxley
- */
 @WebServlet(urlPatterns = {"/ChangeAvailabilityServlet"})
 public class ChangeAvailabilityServlet extends HttpServlet {
     

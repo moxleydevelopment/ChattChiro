@@ -1,7 +1,7 @@
 package Business;
 
 /**
- * Nicholas Hall, Timothy Eolf, Donya Moxley, Jason Fleurival, Benjamin Ard
+ * Nicholas Hall, Timothy Wolf, Donya Moxley, Jason Fleurival, Benjamin Ard
  * CIST2931
  * Team 3
  * ChattChiro - Chiropractors
