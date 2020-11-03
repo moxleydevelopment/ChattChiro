@@ -1,3 +1,10 @@
+/*
+ * Nicholas Hall, Timothy Eolf, Donya Moxley, Jason Fleurival, Benjamin Ard
+ * CIST2931
+ * Team 3
+ * ChattChiro - Chiropractors
+ */
+
 package Business;
 
 import java.net.URI;
