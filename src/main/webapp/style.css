@@ -1,11 +1,21 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Nicholas Hall, Timothy Eolf, Donya Moxley, Jason Fleurival, Benjamin Ard
+CIST2931
+Team 3
+ChattChiro - Chiropractors
 */
+
 /* 
     Created on : Nov 2, 2020, 3:06:51 PM
     Author     : donyamoxley
+*/
+
+/* 
+This index container is used to hold the image and define what it does and its height
+background-image - sets background image to element.
+background-size - sets size of the background image.
+background-reoeat - tells image not to repeat.
+height - sets height of image.
 */
 
 #index_container {
