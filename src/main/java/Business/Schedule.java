@@ -1,8 +1,21 @@
-/*
- * CIST 2931 - Team 3 
+package Business;
+
+/**
+ * Nicholas Hall, Timothy Eolf, Donya Moxley, Jason Fleurival, Benjamin Ard
+ * CIST2931
+ * Team 3
+ * ChattChiro - Chiropractors
  */
 
-package Business;
+ /**
+     * Code Creates class Schedule.
+     * @param date A string representing the date.
+     * @param docId A string representing the doctor's ID.
+     * @param DBPATH A string representing the database Path.
+     * @param Schedule A place to put schedule inputs from database.
+     * @param inputDate A string representing the date from the database.
+     * @param inputDoct A string representing the Doctors ID from the database.
+     */
 
 public class Schedule {
     String date;

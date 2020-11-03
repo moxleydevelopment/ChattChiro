@@ -1,9 +1,10 @@
 package Business;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Nicholas Hall, Timothy Eolf, Donya Moxley, Jason Fleurival, Benjamin Ard
+ * CIST2931
+ * Team 3
+ * ChattChiro - Chiropractors
  */
 
 import java.io.IOException;
