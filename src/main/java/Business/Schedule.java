@@ -7,6 +7,16 @@ package Business;
  * ChattChiro - Chiropractors
  */
 
+ /**
+     * Code Creates class Schedule.
+     * @param date A string representing the date.
+     * @param docId A string representing the doctor's ID.
+     * @param DBPATH A string representing the database Path.
+     * @param Schedule A place to put schedule inputs from database.
+     * @param inputDate A string representing the date from the database.
+     * @param inputDoct A string representing the Doctors ID from the database.
+     */
+
 public class Schedule {
     String date;
     String docId;
