@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class DoctorFactory {
     public Map<String, Doctor> getDoctors() throws Exception {
-        Map<String, Doctor> doctorMap = new HashMap();
+        Map<String, Doctor> doctorMap = new HashMap<String, Doctor>();
         try {
             Connection con;
             Class.forName("org.postgresql.Driver");
