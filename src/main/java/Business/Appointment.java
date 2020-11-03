@@ -1,15 +1,11 @@
-/*
+package Business;
+
+/**
  * Nicholas Hall, Timothy Eolf, Donya Moxley, Jason Fleurival, Benjamin Ard
  * CIST2931
  * Team 3
  * ChattChiro - Chiropractors
  */
-
-/*
- * CIST 2931 - Team 3
- */
-
-package Business;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
