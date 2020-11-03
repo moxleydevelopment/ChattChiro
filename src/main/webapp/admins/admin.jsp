@@ -19,6 +19,7 @@
               default: startDate = today;
             }
             String startDateText = startDate.format(formatter);
+            Map<String, Doctor> doctorMap = doctorFactory.getDoctors();
 %>
 <!DOCTYPE html>
 <html>
