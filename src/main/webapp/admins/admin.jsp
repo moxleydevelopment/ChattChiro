@@ -87,7 +87,7 @@ input - Specifies a input field for user to enter information.
     <h1>Admin Panel</h1>
 
 <%-- 
-Doctor Table showing startDate information.
+Table showing startdate information.
 Gives user option to update schedule dates.
 --%>
 
