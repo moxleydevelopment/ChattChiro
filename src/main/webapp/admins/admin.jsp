@@ -16,7 +16,7 @@ Defines ContentType for servlet container to run and pageEncoding to read the js
 Imports more than one class using import tag.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Business.Admin,Business.Doctor,Business.DoctorFactory,java.time.LocalDate,java.time.format.DateTimeFormatter,java.util.Map"%>
+<%@page import="Business.Admin,Business.Doctor,Business.DoctorFactory,Business.Availability,java.time.LocalDate,java.time.format.DateTimeFormatter,java.util.Map"%>
 <%-- 
 Code Uses Scriplets to define date for tables.
 Using getAttribute method to retrieve admin data.
@@ -51,6 +51,7 @@ name/content - Displays document based on device through meta tag.
 link (rel/href) - Links to external Stylesheet through both external link and style.css.
 integrity - attribute that allows browser to check defined file source to ensure code is not loaded if incorrect.
 --%>
+
 <head>
   <title>ChattChiro</title>
   <meta charset="UTF-8">
@@ -76,6 +77,7 @@ label - Defines a label for specific elements used.
 href - links to a specific url or .jsp.
 input - Specifies a input field for user to enter information.
 --%>
+
 <body>
   <div id="index_container" class='container-fluid'>
     <div class='row'>
@@ -87,43 +89,58 @@ input - Specifies a input field for user to enter information.
     <% if (a1 != null){ %>
     <h1>Admin Panel</h1>
 
-<%-- 
+    <%-- 
 Table showing startdate information.
 Gives user option to update schedule dates.
 --%>
 
     <div class='row align-items-center justify-content-center'>
-      <div class='col-6' style="background-color:rgba(12, 11, 95, 0.8); border-radius: 15px 30px;">
+      <div class='col-10' style="background-color:rgba(12, 11, 95, 0.8); border-radius: 15px 30px;">
         <form action="ChangeAvailabilityServlet" method='post' class='card  border-0 bg-transparent text-white'>
           <div class='card-body my-5'>
             <h2>Schedule:</h2>
             <table class="table" style="background: #ddd">
               <tr>
                 <th>Doctor:</th>
-                <th><%= startDate.format(formatter) %></th>
-                <th><%= startDate.plusDays(1).format(formatter) %></th>
-                <th><%= startDate.plusDays(2).format(formatter) %></th>
-                <th><%= startDate.plusDays(3).format(formatter) %></th>
-                <th><%= startDate.plusDays(4).format(formatter) %></th>
-                <th><%= startDate.plusDays(7).format(formatter) %></th>
-                <th><%= startDate.plusDays(8).format(formatter) %></th>
-                <th><%= startDate.plusDays(9).format(formatter) %></th>
-                <th><%= startDate.plusDays(10).format(formatter) %></th>
-                <th><%= startDate.plusDays(11).format(formatter) %></th>
+                <% 
+                  int count = 0;
+                  int x = 0;
+                  while (count < 10){
+                    if (startDate.plusDays(x).getDayOfWeek().toString() == "SATURDAY" || startDate.plusDays(x).getDayOfWeek().toString() == "SUNDAY"){
+                      x += 1;
+                      continue;
+                    } else {
+                      %>
+                <th><%= startDate.plusDays(x).format(formatter) %></th>
+                <%
+                      count += 1;
+                      x += 1;
+                    }
+                  }
+                %>
+
               </tr>
               <% for(Map.Entry<String, Doctor> entry : doctorMap.entrySet()){ %>
-              <tr>  
+              <tr>
                 <td><%= entry.getValue().getFullName() %></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate %>" value="N"></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(1) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(1) %>" value="N"></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(2) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(2) %>" value="N"></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(3) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(3) %>" value="N"></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(4) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(4) %>" value="N"></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(7) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(7) %>" value="N"></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(8) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(8) %>" value="N"></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(9) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(9) %>" value="N"></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(10) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(10) %>" value="N"></td>
-                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(11) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(11) %>" value="N"></td>
+                <%
+                  count = 0;
+                  x = 0;
+                  while (count < 10){
+                    if (startDate.plusDays(x).getDayOfWeek().toString() == "SATURDAY" || startDate.plusDays(x).getDayOfWeek().toString() == "SUNDAY"){
+                      x += 1;
+                      continue;
+                    } else {
+                      Boolean available = Availability.getAvailability(entry.getValue().getID(), startDate.plusDays(x).toString());
+                %>
+                <td>Y <input type="radio" <% if (available){ %>checked<% } %> name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(x) %>" value="Y">
+                    N <input type="radio" <% if (!available){ %>checked<% } %> name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(x) %>" value="N"></td>
+                <% 
+                  count += 1;
+                  x += 1;
+                  }
+                } 
+                %>
               </tr>
               <% } %>
             </table>
@@ -135,7 +152,7 @@ Gives user option to update schedule dates.
 
     <div class='row align-items-center justify-content-center' style="margin-top: 50px">
 
-<%-- 
+      <%-- 
 Gives option to add new Chiropractor to data from user added information on page.
 --%>
 
@@ -179,7 +196,7 @@ Gives option to add new Chiropractor to data from user added information on page
 
 
   </div>
-<%-- 
+  <%-- 
 Used if Access to Admin is denied
 --%>
   <% } else { %>
@@ -187,7 +204,7 @@ Used if Access to Admin is denied
   <% } %>
 
   </div>
-<%-- Script points to external script file through src attribute to URL --%>
+  <%-- Script points to external script file through src attribute to URL --%>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
