@@ -16,7 +16,7 @@ Defines ContentType for servlet container to run and pageEncoding to read the js
 Imports more than one class using import tag.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Business.Admin,java.time.LocalDate,java.time.format.DateTimeFormatter"%>
+<%@page import="Business.Admin,Business.Doctor,Business.DoctorFactory,java.time.LocalDate,java.time.format.DateTimeFormatter,java.util.Map"%>
 <%-- 
 Code Uses Scriplets to define date for tables.
 Using getAttribute method to retrieve admin data.
@@ -38,6 +38,7 @@ Map - maps associates strings keys and gets values from doctor for map.
               default: startDate = today;
             }
             String startDateText = startDate.format(formatter);
+            DoctorFactory doctorFactory = new DoctorFactory();
             Map<String, Doctor> doctorMap = doctorFactory.getDoctors();
 %>
 <!DOCTYPE html>
@@ -95,7 +96,7 @@ Gives user option to update schedule dates.
       <div class='col-6' style="background-color:rgba(12, 11, 95, 0.8); border-radius: 15px 30px;">
         <form action="ChangeAvailabilityServlet" method='post' class='card  border-0 bg-transparent text-white'>
           <div class='card-body my-5'>
-            <h2>Schedules <%= startDateText %>:</h2>
+            <h2>Schedule:</h2>
             <table class="table" style="background: #ddd">
               <tr>
                 <th>Doctor:</th>
@@ -110,19 +111,21 @@ Gives user option to update schedule dates.
                 <th><%= startDate.plusDays(10).format(formatter) %></th>
                 <th><%= startDate.plusDays(11).format(formatter) %></th>
               </tr>
-              <tr>
-                <td>Paul Schmidt</td>
-                <td>Y <input type="radio" name="C201, <%= startDate %>" value="Y"> N <input type="radio" name="C201, <%= startDate %>" value="N"></td>
-                <td>Y <input type="radio" name="C201, <%= startDate.plusDays(1) %>" value="Y"> N <input type="radio" name="C201, <%= startDate.plusDays(1) %>" value="N"></td>
-                <td>Y <input type="radio" name="C201, <%= startDate.plusDays(2) %>" value="Y"> N <input type="radio" name="C201, <%= startDate.plusDays(2) %>" value="N"></td>
-                <td>Y <input type="radio" name="C201, <%= startDate.plusDays(3) %>" value="Y"> N <input type="radio" name="C201, <%= startDate.plusDays(3) %>" value="N"></td>
-                <td>Y <input type="radio" name="C201, <%= startDate.plusDays(4) %>" value="Y"> N <input type="radio" name="C201, <%= startDate.plusDays(4) %>" value="N"></td>
-                <td>Y <input type="radio" name="C201, <%= startDate.plusDays(7) %>" value="Y"> N <input type="radio" name="C201, <%= startDate.plusDays(7) %>" value="N"></td>
-                <td>Y <input type="radio" name="C201, <%= startDate.plusDays(8) %>" value="Y"> N <input type="radio" name="C201, <%= startDate.plusDays(8) %>" value="N"></td>
-                <td>Y <input type="radio" name="C201, <%= startDate.plusDays(9) %>" value="Y"> N <input type="radio" name="C201, <%= startDate.plusDays(9) %>" value="N"></td>
-                <td>Y <input type="radio" name="C201, <%= startDate.plusDays(10) %>" value="Y"> N <input type="radio" name="C201, <%= startDate.plusDays(10) %>" value="N"></td>
-                <td>Y <input type="radio" name="C201, <%= startDate.plusDays(11) %>" value="Y"> N <input type="radio" name="C201, <%= startDate.plusDays(11) %>" value="N"></td>
+              <% for(Map.Entry<String, Doctor> entry : doctorMap.entrySet()){ %>
+              <tr>  
+                <td><%= entry.getValue().getFullName() %></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate %>" value="N"></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(1) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(1) %>" value="N"></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(2) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(2) %>" value="N"></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(3) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(3) %>" value="N"></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(4) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(4) %>" value="N"></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(7) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(7) %>" value="N"></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(8) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(8) %>" value="N"></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(9) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(9) %>" value="N"></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(10) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(10) %>" value="N"></td>
+                <td>Y <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(11) %>" value="Y"> N <input type="radio" name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(11) %>" value="N"></td>
               </tr>
+              <% } %>
             </table>
             <button type="submit" class="btn btn-primary">Update Schedules</button>
           </div>
