@@ -248,6 +248,10 @@ public class Doctor {
     public String getLastName(){
         return lastName;
     }
+
+    public String getFullName(){
+        return firstName + " " + lastName;
+    }
     
     /**
      * Sets doctor's name
