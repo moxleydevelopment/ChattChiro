@@ -268,9 +268,9 @@ public class Doctor {
                 String date = rs.getString(3);
                 String timeslot = rs.getString(4);
                 String procedure = rs.getString(5);
-                Appointment newAppointmnt = new Appointment(doctID, patientID, date, timeslot, procedure);
+                Appointment newAppointment = new Appointment(date, patientID, doctID, timeslot, procedure);
                 System.out.println("adding to apptmap + " + date + " " + doctID + " " + patientID);
-                appointmentList.add(newAppointmnt);
+                appointmentList.add(newAppointment);
             }
             con.close();
             return appointmentList;
