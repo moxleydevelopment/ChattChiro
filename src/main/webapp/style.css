@@ -22,10 +22,6 @@ height - sets height of image.
     background-image: url('images/index_bg.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
-}
-
-user_login_for {
-    
-   
+    background-attachment: fixed;
+    height: 100%;
 }
