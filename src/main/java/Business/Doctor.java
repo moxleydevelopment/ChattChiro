@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -244,7 +243,6 @@ public class Doctor {
 
     public List<Appointment> getAppointments(String inputDate) throws Exception {
         List<Appointment> appointmentList = new ArrayList<Appointment>();
-        LocalDate today = LocalDate.now();
         try {
             Connection con;
             Class.forName("org.postgresql.Driver");
@@ -261,7 +259,7 @@ public class Doctor {
             System.out.println("Connected to DB.");
 
             Statement statement = con.createStatement();
-            String sql = "SELECT * FROM \"Appointments\" WHERE \"doctID\" = '" + doctId + "' AND date = '" + inputDate + "'";
+            String sql = "SELECT * FROM \"Appointments\" WHERE \"doctID\" = '" + doctId + "' AND date = '" + inputDate + "' ORDER BY timeslot ASC";
             System.out.println(sql);
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
