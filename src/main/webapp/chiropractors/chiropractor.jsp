@@ -68,7 +68,7 @@ class - Specifies classname for element.
                         <h2>Update My Info:</h2>
                         <div class="form-group">
                         <label for="chiroId">ID</label>
-                        <input name='chiroId' type="text" class="form-control" id="chiroId" aria-describedby="chiroId" value="<%= d1.getID()%>">
+                        <input name='chiroId' type="text" class="form-control" id="chiroId" aria-describedby="chiroId" value="<%= d1.getID()%>" readonly>
                         </div>
                         <div class="form-group">
                         <label for="chiroPwd">Password</label>
