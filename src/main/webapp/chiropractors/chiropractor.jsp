@@ -17,7 +17,7 @@ Defines ContentType for servlet container to run and pageEncoding to read the js
 Imports class using import tag.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Business.Doctor,java.time.LocalDate,java.time.format.DateTimeFormatter"%> 
+<%@page import="Business.Doctor,Business.Patient,java.time.LocalDate,java.time.format.DateTimeFormatter,java.util.Map"%> 
 <%-- 
 Code Uses Scriplets to define data for tables.
 Using getAttribute method to retrieve Doctor data.
@@ -25,6 +25,7 @@ Using getAttribute method to retrieve Doctor data.
 <% 
             Doctor d1;
             d1 = (Doctor)session.getAttribute("d1");
+            Map<String, Patient> patientMap = d1.getPatients();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEEE (M/d)");
             LocalDate today = LocalDate.now();
             LocalDate startDate;
@@ -109,9 +110,9 @@ class - Specifies classname for element.
                 <div class="col-4" style="background-color:rgba(12, 11, 95, 0.8); border-radius: 15px 30px;">
                     <form action="ViewApptsByDateServlet" method='post' class='card  border-0 bg-transparent text-white'>
                     <div class='card-body my-5'>
-                        <h2>View appointments:</h2>
+                        <h2>View your appointments:</h2>
                         <div class="form-group">
-                        <select name='chiroId' class="form-control" id="chiroId" aria-describedby="chiroId">
+                        <select name='date' class="form-control" id="date" aria-describedby="date">
                         <% 
                             int count = 0;
                             int x = 0;
@@ -132,7 +133,25 @@ class - Specifies classname for element.
                         </select>
                         </div>
                         <button type="submit" class="btn btn-primary">View</button>
-                        
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class='row align-items-center justify-content-center' style="margin-top: 50px">
+                <div class="col-4" style="background-color:rgba(12, 11, 95, 0.8); border-radius: 15px 30px;">
+                    <form action="ViewApptsByPatientServlet" method='post' class='card  border-0 bg-transparent text-white'>
+                    <div class='card-body my-5'>
+                        <h2>Your patients:</h2>
+                        <div class="form-group">
+                        <select name='patientId' class="form-control" id="patientId" aria-describedby="patientId">
+                            <% for(Map.Entry<String, Patient> entry : patientMap.entrySet()){ %>
+                            <option value="<%= entry.getValue().getID() %>"><%= entry.getValue().getFullName() %></option>
+                            <% } %>
+                        </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">View Recent Appointments</button>
+                        </div>
                 </div>
             </div>
             
