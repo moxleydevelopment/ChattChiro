@@ -284,6 +284,10 @@ public class Patient {
     public void setFirstName(String input){
         firstName = input;
     }
+
+    public String getFullName(){
+        return firstName + " " + lastName;
+    }
     
     /**
      * Gets the email address of the current patient.
