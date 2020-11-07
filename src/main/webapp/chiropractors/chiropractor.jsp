@@ -60,6 +60,42 @@ class - Specifies classname for element.
             </div> 
            
             <h class='h1'>Hello Doctor <%=d1.getFirstName()%></h>
+
+            <div class='row align-items-center justify-content-center'>
+                <div class="col-4" style="background-color:rgba(12, 11, 95, 0.8); border-radius: 15px 30px;">
+                    <form action="UpdateDoctorServlet" method='post' class='card  border-0 bg-transparent text-white'>
+                    <div class='card-body my-5'>
+                        <h2>Update My Info:</h2>
+                        <div class="form-group">
+                        <label for="chiroId">ID</label>
+                        <input name='chiroId' type="text" class="form-control" id="chiroId" aria-describedby="chiroId" value="<%= d1.getID()%>">
+                        </div>
+                        <div class="form-group">
+                        <label for="chiroPwd">Password</label>
+                        <input name='chiroPwd' type="password" class="form-control" id="chiroPwd" aria-describedby="chiroPwd" value="<%= d1.getPwd()%>">
+                        </div>
+                        <div class="form-group">
+                        <label for="chiroFName">First Name</label>
+                        <input name='chiroFName' type="text" class="form-control" id="chiroFName" aria-describedby="chiroFName" value="<%= d1.getFirstName()%>">
+                        </div>
+                        <div class="form-group">
+                        <label for="chiroLName">Last Name</label>
+                        <input name='chiroLName' type="text" class="form-control" id="chiroLName" aria-describedby="chiroLName" value="<%= d1.getLastName()%>">
+                        </div>
+                        <div class="form-group">
+                        <label for="chiroEmail">Email</label>
+                        <input name='chiroEmail' type="text" class="form-control" id="chiroEmail" aria-describedby="chiroEmail" value="<%= d1.getEmail()%>">
+                        </div>
+                        <div class="form-group">
+                        <label for="chiroOfficeNum">Office Number</label>
+                        <input name='chiroOfficeNum' type="text" class="form-control" id="chiroOfficeNum"
+                            aria-describedby="chiroOfficeNum"  value="<%= d1.getOfficeNum()%>">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
             
         </div>
 <%-- Script points to external script file through src attribute to URL --%>
