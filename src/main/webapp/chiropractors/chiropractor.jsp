@@ -68,7 +68,7 @@ class - Specifies classname for element.
                  </nav>
             </div> 
            
-            <h class='h1'>Hello Doctor <%=d1.getFirstName()%></h>
+            <br>
 
             <div class='row align-items-center justify-content-center'>
                 <div class="col-4" style="background-color:rgba(12, 11, 95, 0.8); border-radius: 15px 30px;">
@@ -112,6 +112,7 @@ class - Specifies classname for element.
                     <div class='card-body my-5'>
                         <h2>View your appointments:</h2>
                         <div class="form-group">
+                        <input type='hidden' name='doctID' id='doctID' value='<%= d1.getID() %>'>
                         <select name='date' class="form-control" id="date" aria-describedby="date">
                         <% 
                             int count = 0;
@@ -152,6 +153,7 @@ class - Specifies classname for element.
                         </div>
                         <button type="submit" class="btn btn-primary">View Recent Appointments</button>
                         </div>
+                    </form>
                 </div>
             </div>
             
