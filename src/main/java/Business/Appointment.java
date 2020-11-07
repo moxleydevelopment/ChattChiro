@@ -10,6 +10,8 @@ package Business;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
     /**
      * The {@code Appointment} class is a data model for appointments. 
@@ -31,12 +33,10 @@ public class Appointment {
      */
     String doctId;
     /**
-     * Stores the procedure code.
+     * Stores the procedure.
      */
     String timeSlot;
     String procedure;
-    
-    static final String DBPATH = "C:\\Users\\Timothy\\Desktop\\Fall 2020\\Capstone Class\\NewProj\\Project\\src\\main\\resources\\ChiropractorOfficeDB.accdb";
 
     public Appointment(){
         this("", "", "", "", "");
@@ -83,6 +83,19 @@ public class Appointment {
      */
     public String getPatId(){
         return patId;
+    }
+
+    public String getFormattedTimeslot(){
+        LocalTime apptStartTime = LocalTime.parse("07:00");
+        LocalTime apptEndTime;
+        int loopCount = Integer.parseInt(timeSlot) - 1;
+        for (int i = 0; i < loopCount; i++){
+            apptStartTime = apptStartTime.plusMinutes(30);
+        }
+        apptEndTime = apptStartTime.plusMinutes(30);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
+        String apptTimeString = apptStartTime.format(formatter) + "-" + apptEndTime.format(formatter);
+        return apptTimeString;
     }
     
     /**
