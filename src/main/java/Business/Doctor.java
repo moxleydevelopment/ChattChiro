@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
  * CIST 2931 - Team 3
@@ -202,6 +204,39 @@ public class Doctor {
         } catch (Exception e){
             System.out.println(e);
         }  
+    }
+
+    public Map<String, Patient> getPatients() throws Exception {
+        Map<String, Patient> patientMap = new HashMap<String, Patient>();
+        try {
+            Connection con;
+            Class.forName("org.postgresql.Driver");
+             if( "/app".equals(System.getenv("HOME"))){
+                    URI dbUri = new URI(System.getenv("DATABASE_URL"));
+                    String username = dbUri.getUserInfo().split(":")[0];
+                    String dbPassword = dbUri.getUserInfo().split(":")[1];
+                    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+                    con = DriverManager.getConnection(dbUrl, username, dbPassword);
+                 }else{
+                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
+                 }
+
+            System.out.println("Connected to DB.");
+
+            Statement statement = con.createStatement();
+            String sql = "SELECT DISTINCT \"patientID\" FROM \"Appointments\" WHERE \"doctID\" = '" + doctId + "'";
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                String patientID = rs.getString(1);
+                Patient newPatient = new Patient();
+                newPatient.selectDB(patientID);
+                patientMap.put(patientID, newPatient);
+            }
+            con.close();
+            return patientMap;
+        } catch (Exception e){
+                throw e;
+        }
     }
     
         
