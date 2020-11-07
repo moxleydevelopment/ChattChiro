@@ -13,7 +13,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -240,8 +242,8 @@ public class Doctor {
         }
     }
 
-    public Map<String, Appointment> getAppointments(String inputDate) throws Exception {
-        Map<String, Appointment> appointmentMap = new HashMap<String, Appointment>();
+    public List<Appointment> getAppointments(String inputDate) throws Exception {
+        List<Appointment> appointmentList = new ArrayList<Appointment>();
         LocalDate today = LocalDate.now();
         try {
             Connection con;
@@ -270,10 +272,10 @@ public class Doctor {
                 String procedure = rs.getString(5);
                 Appointment newAppointmnt = new Appointment(doctID, patientID, date, timeslot, procedure);
                 System.out.println("adding to apptmap + " + date + " " + doctID + " " + patientID);
-                appointmentMap.put(patientID, newAppointmnt);
+                appointmentList.add(newAppointmnt);
             }
             con.close();
-            return appointmentMap;
+            return appointmentList;
         } catch (Exception e){
                 throw e;
         }

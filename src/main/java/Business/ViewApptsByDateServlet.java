@@ -10,7 +10,7 @@ package Business;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Map;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -60,9 +60,9 @@ public class ViewApptsByDateServlet extends HttpServlet {
             d1.selectDB(doctID);
             
             HttpSession ses1 = request.getSession();
-            Map<String, Appointment> appointmentMap = d1.getAppointments(inputDate);
+            List<Appointment> appointmentList = d1.getAppointments(inputDate);
             ses1.setAttribute("date", inputDate);
-            ses1.setAttribute("appointments", appointmentMap);
+            ses1.setAttribute("appointments", appointmentList);
             RequestDispatcher rd = request.getRequestDispatcher("/chiropractors/displayAppointments.jsp");
             rd.forward(request, response);
         }

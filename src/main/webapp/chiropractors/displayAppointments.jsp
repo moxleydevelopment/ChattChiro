@@ -17,13 +17,13 @@ Defines ContentType for servlet container to run and pageEncoding to read the js
 Imports class using import tag.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Business.Doctor,Business.Appointment,Business.Patient,java.time.LocalDate,java.time.format.DateTimeFormatter,java.util.Map"%> 
+<%@page import="Business.Doctor,java.util.List,Business.Appointment,Business.Patient,java.time.LocalDate,java.time.format.DateTimeFormatter"%> 
 <%-- 
 Code Uses Scriplets to define data for tables.
 Using getAttribute method to retrieve Doctor data.
 --%>
 <% 
-            Map<String, Appointment> appointmentMap = (Map<String, Appointment>)session.getAttribute("appointments");
+            List<Appointment> appointmentList = (List<Appointment>)session.getAttribute("appointments");
             String inputDateString = (String)session.getAttribute("date");
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, MMMM d");
             LocalDate selectedDate = LocalDate.parse(inputDateString);
@@ -72,13 +72,13 @@ class - Specifies classname for element.
                                     <th>Procedure</th>
                                     <th>Time</th>
                                 </tr>
-                                <% for(Map.Entry<String, Appointment> entry : appointmentMap.entrySet()){
+                                <% for(Appointment entry : appointmentList){
                                     Patient p1 = new Patient();
-                                    p1.selectDB(entry.getValue().getPatId()); %>
+                                    p1.selectDB(entry.getPatId()); %>
                                 <tr>
                                     <td><%= p1.getFullName() %></td>
-                                    <td><%= entry.getValue().getProcedure() %></td>
-                                    <td><%= entry.getValue().getTimeSlot() %></td>
+                                    <td><%= entry.getProcedure() %></td>
+                                    <td><%= entry.getFormattedTimeslot() %></td>
                                 </tr>
                                 <% } %>
                                 
