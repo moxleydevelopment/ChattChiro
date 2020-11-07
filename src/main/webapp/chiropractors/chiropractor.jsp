@@ -17,7 +17,7 @@ Defines ContentType for servlet container to run and pageEncoding to read the js
 Imports class using import tag.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Business.Doctor"%> 
+<%@page import="Business.Doctor,java.time.LocalDate,java.time.format.DateTimeFormatter"%> 
 <%-- 
 Code Uses Scriplets to define data for tables.
 Using getAttribute method to retrieve Doctor data.
@@ -25,6 +25,14 @@ Using getAttribute method to retrieve Doctor data.
 <% 
             Doctor d1;
             d1 = (Doctor)session.getAttribute("d1");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEEE (M/d)");
+            LocalDate today = LocalDate.now();
+            LocalDate startDate;
+            switch(today.getDayOfWeek()){
+              case SATURDAY: startDate = today.plusDays(2);
+              case SUNDAY: startDate = today.plusDays(1);
+              default: startDate = today;
+            }
            
 %>
 <!DOCTYPE html>
@@ -94,6 +102,37 @@ class - Specifies classname for element.
                         <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                     </form>
+                </div>
+                </div>
+
+                <div class='row align-items-center justify-content-center' style="margin-top: 50px">
+                <div class="col-4" style="background-color:rgba(12, 11, 95, 0.8); border-radius: 15px 30px;">
+                    <form action="ViewApptsByDateServlet" method='post' class='card  border-0 bg-transparent text-white'>
+                    <div class='card-body my-5'>
+                        <h2>View appointments:</h2>
+                        <div class="form-group">
+                        <select name='chiroId' class="form-control" id="chiroId" aria-describedby="chiroId">
+                        <% 
+                            int count = 0;
+                            int x = 0;
+                            while (count < 10){
+                                if (startDate.plusDays(x).getDayOfWeek().toString() == "SATURDAY" || startDate.plusDays(x).getDayOfWeek().toString() == "SUNDAY"){
+                                x += 1;
+                                continue;
+                                } else {
+                        %>
+                            <option value="<%= startDate.plusDays(x) %>"><%= startDate.plusDays(x).format(formatter) %></option>
+                        <%
+                                count += 1;
+                                x += 1;
+                                }
+                            }
+                        %>
+                            
+                        </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">View</button>
+                        
                 </div>
             </div>
             
