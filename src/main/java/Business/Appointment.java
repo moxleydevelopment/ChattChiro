@@ -33,12 +33,13 @@ public class Appointment {
     /**
      * Stores the procedure code.
      */
-    int timeSlot;
+    String timeSlot;
+    String procedure;
     
     static final String DBPATH = "C:\\Users\\Timothy\\Desktop\\Fall 2020\\Capstone Class\\NewProj\\Project\\src\\main\\resources\\ChiropractorOfficeDB.accdb";
 
     public Appointment(){
-        this("", "", "", 0);
+        this("", "", "", "", "");
     }
     
     /**
@@ -48,19 +49,24 @@ public class Appointment {
      * @param inputDoctId The ID of the doctor.
      * @param inputTimeSlot The code of the procedure being performed.
      */
-    public Appointment(String inputApptDateTime, String inputPatId, String inputDoctId, int inputTimeSlot) {
+    public Appointment(String inputApptDateTime, String inputPatId, String inputDoctId, String inputTimeSlot, String inputProcedure) {
         apptDate = inputApptDateTime;
         patId = inputPatId;
         doctId = inputDoctId;
         timeSlot = inputTimeSlot;
+        procedure = inputProcedure;
     }
-    
-    /**
+
+	/**
      * Gets timeslot.
      * @return An integer representing the timeslot.
      */
-    public int getTimeSlot(){
+    public String getTimeSlot(){
         return timeSlot;
+    }
+
+    public String getProcedure(){
+        return procedure;
     }
     
     /**
@@ -83,7 +89,7 @@ public class Appointment {
      * Sets the timeslot.
      * @param inputTimeSlot An integer representing the timeslot.
      */
-    public void setTimeSlot(int inputTimeSlot){
+    public void setTimeSlot(String inputTimeSlot){
         timeSlot = inputTimeSlot;
     }
     
@@ -160,7 +166,7 @@ public class Appointment {
                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                 }
             Statement statement = con.createStatement();
-            String sql = String.format("INSERT INTO Appointments VALUES ('%s', '%d', '%s', '%s');", inputApptDate, inputTimeSlot, inputPatId, inputDoctId);
+            String sql = String.format("INSERT INTO Appointments VALUES ('%s', '%s', '%s', '%s');", inputApptDate, inputTimeSlot, inputPatId, inputDoctId);
             System.out.println("SQL String: " + sql);
             statement.execute(sql);  
             con.close();
