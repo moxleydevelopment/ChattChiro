@@ -195,7 +195,7 @@ public class Doctor {
             System.out.println("Connected to DB. Updating doctor...");
             
             Statement statement = con.createStatement();
-            String sql = String.format("UPDATE \"Chiropractor\" SET password = '%s', firstName = '%s', lastName = '%s', email = '%s', office = '%d' WHERE id = '%s';", password, firstName, lastName, email, officeNum, doctId);
+            String sql = String.format("UPDATE \"Chiropractor\" SET password = '%s', \"firstName\" = '%s', \"lastName\" = '%s', email = '%s', office = '%s' WHERE id = '%s';", password, firstName, lastName, email, officeNum, doctId);
             System.out.println("SQL String: " + sql);
             statement.execute(sql);  
             con.close();
