@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -234,6 +235,45 @@ public class Doctor {
             }
             con.close();
             return patientMap;
+        } catch (Exception e){
+                throw e;
+        }
+    }
+
+    public Map<String, Appointment> getAppointments(String inputDate) throws Exception {
+        Map<String, Appointment> appointmentMap = new HashMap<String, Appointment>();
+        LocalDate today = LocalDate.now();
+        try {
+            Connection con;
+            Class.forName("org.postgresql.Driver");
+             if( "/app".equals(System.getenv("HOME"))){
+                    URI dbUri = new URI(System.getenv("DATABASE_URL"));
+                    String username = dbUri.getUserInfo().split(":")[0];
+                    String dbPassword = dbUri.getUserInfo().split(":")[1];
+                    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+                    con = DriverManager.getConnection(dbUrl, username, dbPassword);
+                 }else{
+                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
+                 }
+
+            System.out.println("Connected to DB.");
+
+            Statement statement = con.createStatement();
+            String sql = "SELECT * FROM \"Appointments\" WHERE \"doctID\" = '" + doctId + "' AND date = '" + inputDate + "'";
+            System.out.println(sql);
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                String doctID = rs.getString(1);
+                String patientID = rs.getString(2);
+                String date = rs.getString(3);
+                String timeslot = rs.getString(4);
+                String procedure = rs.getString(5);
+                Appointment newAppointmnt = new Appointment(doctID, patientID, date, timeslot, procedure);
+                System.out.println("adding to apptmap + " + date + " " + doctID + " " + patientID);
+                appointmentMap.put(patientID, newAppointmnt);
+            }
+            con.close();
+            return appointmentMap;
         } catch (Exception e){
                 throw e;
         }
