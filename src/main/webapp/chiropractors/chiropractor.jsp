@@ -17,7 +17,7 @@ Defines ContentType for servlet container to run and pageEncoding to read the js
 Imports class using import tag.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Business.Doctor,Business.Patient,java.time.LocalDate,java.time.format.DateTimeFormatter,java.util.Map"%> 
+<%@page import="Business.Doctor,Business.Appointment,java.util.List,Business.Patient,java.time.LocalDate,java.time.format.DateTimeFormatter,java.util.Map"%> 
 <%-- 
 Code Uses Scriplets to define data for tables.
 Using getAttribute method to retrieve Doctor data.
@@ -26,7 +26,7 @@ Using getAttribute method to retrieve Doctor data.
             Doctor d1;
             d1 = (Doctor)session.getAttribute("d1");
             Map<String, Patient> patientMap = d1.getPatients();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEEE (M/d)");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, MMMM d");
             LocalDate today = LocalDate.now();
             LocalDate startDate;
             switch(today.getDayOfWeek()){
@@ -122,8 +122,9 @@ class - Specifies classname for element.
                                 x += 1;
                                 continue;
                                 } else {
+                                    List<Appointment> appointmentList = d1.getAppointments(startDate.plusDays(x).toString());
                         %>
-                            <option value="<%= startDate.plusDays(x) %>"><%= startDate.plusDays(x).format(formatter) %></option>
+                            <option value="<%= startDate.plusDays(x) %>"><%= startDate.plusDays(x).format(formatter) + " (" + appointmentList.size() + " appointments)" %></option>
                         <%
                                 count += 1;
                                 x += 1;
