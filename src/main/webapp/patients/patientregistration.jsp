@@ -74,14 +74,6 @@ button - Defines a clickable button for user to click and submit data.
                               <label for="email">Email</label>
                               <input type="email" name="email" class="form-control" id="">
                             </div>
-                            <div class="form-group">
-                              <label for="address">Address</label>
-                              <input type="text" name="address" class="form-control" id="">
-                            </div>
-                            <div class="form-group">
-                              <label for="insurance">Insurance</label>
-                              <input type="text" name="insCo" class="form-control" id="">
-                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>

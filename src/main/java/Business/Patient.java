@@ -34,7 +34,7 @@ public class Patient {
     private String insCo;
     
     public Patient(){
-        this("", "", "", "", "", "", "");
+        this("", "", "", "", "");
     }
     /**
      * Creates a new patient object.
@@ -46,14 +46,12 @@ public class Patient {
      * @param emailIn A string representing the patient's email address.
      * @param insCoIn A string representing the patient's insurance company. 
      */
-    public Patient(String idIn, String pwdIn, String firstNameIn, String lastNameIn, String addressIn, String emailIn, String insCoIn){
+    public Patient(String idIn, String pwdIn, String firstNameIn, String lastNameIn, String emailIn){
         patId = idIn;
         password = pwdIn;
         firstName = firstNameIn;
         lastName = lastNameIn;
-        address = addressIn;
         email = emailIn;
-        insCo = insCoIn;
     }
     
     /**
@@ -64,9 +62,7 @@ public class Patient {
         System.out.println("PatID    : " + patId);
         System.out.println("Password  : " + password); 
         System.out.println("Name: " + firstName);
-        System.out.println("Address   : " + address);
         System.out.println("Email     : " + email);
-        System.out.println("Insurance     : " + insCo);
     }
     
     /**
@@ -133,7 +129,7 @@ public class Patient {
      * @param emailIn  A string representing the patient's email address.
      * @param insCoIn  A string representing the patient's insurance company.
      */
-    public void insertDB(String IDIn, String pwdIn, String firstName, String lastName, String addressIn, String emailIn, String insCoIn){
+    public void insertDB(String IDIn, String pwdIn, String firstName, String lastName, String emailIn){
         try {
             
            Connection con;
@@ -152,7 +148,7 @@ public class Patient {
             System.out.println("Connected to DB.");
             
             Statement statement = con.createStatement();
-            String sql = String.format("INSERT INTO \"Patients\" (password, id, firstName, lastName, email) VALUES ('%s', '%s', '%s', '%s', '%s');", pwdIn, IDIn, firstName, lastName, emailIn);
+            String sql = String.format("INSERT INTO \"Patients\" (password, id, \"firstName\", \"lastName\", email) VALUES ('%s', '%s', '%s', '%s', '%s');", pwdIn, IDIn, firstName, lastName, emailIn);
             System.out.println("SQL String: " + sql);
             statement.execute(sql);  
             con.close();
