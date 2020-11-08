@@ -58,9 +58,10 @@ class - Specifies classname for element.
                     <a class="navbar-brand">ChattChiro</a>
                  </nav>
             </div> 
+            
            
             <h class='h1'>Hello <%=p1.getfirstName()%></h>
-            
+            <a href="./patients/updatepatient.jsp">Update Profile</a>
         </div>
 <%-- Script points to external script file through src attribute to URL --%>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

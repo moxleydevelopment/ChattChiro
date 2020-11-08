@@ -125,9 +125,8 @@ public class Patient {
      * @param pwdIn A string representing the patient's password.
      * @param firstName
      * @param lastName
-     * @param addressIn A string representing the patient's address.
      * @param emailIn  A string representing the patient's email address.
-     * @param insCoIn  A string representing the patient's insurance company.
+     * 
      */
     public void insertDB(String IDIn, String pwdIn, String firstName, String lastName, String emailIn){
         try {
