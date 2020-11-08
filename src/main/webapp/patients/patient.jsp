@@ -60,7 +60,11 @@ class - Specifies classname for element.
             </div> 
             
            
-            <h class='h1'>Hello <%=p1.getfirstName()%></h>
+            <h class='h1'>Hello <%=p1.getFirstName()%> <%=p1.getLastName()%> </h>
+            <h class='h1'>Customer ID: <%=p1.getID()%></h>
+            <h class='h1'>Password: <%=p1.getPwd()%></h>
+            <h class='h1'>Email: <%=p1.getEmail()%></h>
+            
             <a href="./patients/updatepatient.jsp">Update Profile</a>
         </div>
 <%-- Script points to external script file through src attribute to URL --%>

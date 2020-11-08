@@ -1,10 +1,9 @@
 package Business;
 
-/**
- * Nicholas Hall, Timothy Wolf, Donya Moxley, Jason Fleurival, Benjamin Ard
- * CIST2931
- * Team 3
- * ChattChiro - Chiropractors
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 
 import java.io.IOException;
@@ -21,37 +20,31 @@ import javax.servlet.http.HttpSession;
  *
  * @author donyamoxley
  */
-@WebServlet(urlPatterns = {"/PatientRegistrationServlet"})
-public class PatientRegistrationServlet extends HttpServlet {
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+@WebServlet(urlPatterns = {"/PatientUpdateServlet"})
+public class PatientUpdateServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String customerId,password, firstName, lastName, email;
+         String customerId,password, firstName, lastName, email;
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
             customerId = request.getParameter("customerId");
             password = request.getParameter("password");
             firstName = request.getParameter("firstName");
             lastName = request.getParameter("lastName");
             email = request.getParameter("email");
             Patient p1 = new Patient();
-            p1.insertDB(customerId, password, firstName, lastName, email);
+            p1.updateDB(customerId, password, firstName, lastName, email);
             try {
                 if(p1.selectDB(customerId)){
                     HttpSession ses1;
@@ -65,8 +58,6 @@ public class PatientRegistrationServlet extends HttpServlet {
             }catch(Exception e){
             
         }
-             
-            
         }
     }
 

@@ -194,7 +194,7 @@ public class Patient {
     /**
      * Updates the database row associated with the current object.
      */
-    public void updateDB(){
+    public void updateDB(String IDIn, String pwdIn, String firstName, String lastName, String emailIn){
         try {
             Connection con;
             Class.forName("org.postgresql.Driver");
@@ -211,7 +211,7 @@ public class Patient {
             System.out.println("Attempting to update patient record in database.");
             
             Statement statement = con.createStatement();
-            String sql = String.format("UPDATE \"Patients\" SET password = '%s', firstName = '%s', lastName = '%s', email = '%s' WHERE id = '%s';", password, firstName, lastName, email, patId);
+            String sql = String.format("UPDATE \"Patients\" SET password = '%s', firstName = '%s', lastName = '%s', email = '%s' WHERE id = '%s';", password, firstName, lastName, emailIn, IDIn);
             System.out.println("SQL String: " + sql);
             statement.execute(sql);  
             con.close();
@@ -306,7 +306,7 @@ public class Patient {
         lastName = input;
     }
     
-    public String getfirstName(){
+    public String getFirstName(){
         return firstName;
     }
     

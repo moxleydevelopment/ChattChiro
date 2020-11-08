@@ -5,6 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Business.Patient"%> 
+ <% 
+            Patient p1;
+            p1 = (Patient)session.getAttribute("p1");
+           
+%>
 <!DOCTYPE html>
 <html>
      <head>
@@ -21,6 +27,31 @@
                     <a class="navbar-brand">ChattChiro</a>
                 </nav>
             </div> 
+            <div class='col-6'>
+                    <form action="../PatientUpdateServlet" method='post' class='card  border-0 bg-transparent'>
+                        <div class='card-body my-5'>
+                            <div class="form-group">
+                              <input name='customerId' type="hidden" class="form-control" id="customerId" value="<%=p1.getID()%>">
+                            <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" name="password" class="form-control" value="<%=p1.getPwd()%>">
+                            </div>
+                            <div class="form-group">
+                              <label for="firstName">First Name</label>
+                              <input type="text" name="firstName" class="form-control" value="<%=p1.getFirstName()%>">
+                            </div>
+                            <div class="form-group">
+                              <label for="lastName">Last Name</label>
+                              <input type="text" name="lastName" class="form-control" value="<%=p1.getLastName()%>">
+                            </div>
+                            <div class="form-group">
+                              <label for="email">Email</label>
+                              <input type="email" name="email" class="form-control" value="<%=p1.getEmail()%>">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
         </div>    
     </body>
 </html>
