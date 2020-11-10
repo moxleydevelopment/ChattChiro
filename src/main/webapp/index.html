@@ -40,9 +40,9 @@ input - Specifies a input field for user to enter information (Id, Password).
     <body >
         <div id="index_container" class='container-fluid'>
             <div class='row '>
-                <nav class="navbar navbar-light bg-light col-12 shadow ">
+                <nav class="navbar navbar-light bg-light col-12 shadow  py-0">
                     <a href="#" class="navbar-brand">ChattChiro</a>
-                    <button class="btn btn-primary">Book Appointment</button>
+                    <button class="btn btn-info">Staff Login</button>
                 </nav>
             </div> 
             <div class="row bg-white mt-4 ">
@@ -72,7 +72,7 @@ input - Specifies a input field for user to enter information (Id, Password).
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center bg-warning ">
+            <div class="row justify-content-center" style="background-image: linear-gradient(to bottom right, blue, green);">
                 <div class="col-1 bg-white py-3">
                   <a class="nav-link active" href="#">HOME</a>
                 </div>
@@ -104,31 +104,92 @@ input - Specifies a input field for user to enter information (Id, Password).
             <div id="home-banner" class="row justify-content-end">
                 <div class="col-6 banner-div">
                     <div class="row ">
-                        <div class="col-12 my-5 pt-5">
-                            <p class="h1 mt-5 text-left text-white">The Most Valuable</p>
-                            <p class="h1 text-left text-white"> Thing is Your Health</p>
-                        </div>     
+                        <div class="col-8 my-5 pt-5">
+                            <p class="h1 mt-5 text-left text-info">The Most Valuable</p>
+                            <p class="h1 text-left text-info"> Thing is Your Health</p>
+                            <p class="lead">
+                               Far far away, behind the word mountains, far from the countries Vokalia 
+                               and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.
+                             </p>
+                        </div> 
+                        <div class="col-7 rounded-pill bg-white text-right pr-0 ml-2">
+                          
+                           <button type="button" class="btn btn-info btn-lg rounded-pill ">Book Appointment</button>
+                        </div>
                     </div>
                 </div> 
             </div>
-            <div  class="row">
+            <div class="row justify-content-center" style="background-color: rgb(245,245,245);">
                 <div class='col-6'>
-                    
-                </div>
-                 <div class='col-6 align-self-end' style="background-color:rgba(12, 11, 95, 0.5); border-radius: 15px 30px;">
-                     <form action="PatientLoginServletDB" method='post' class='card  border-0 bg-transparent text-white' >
-                        <div class='card-body my-5'>
-                            <div class="form-group">
-                              <label for="customerId">Customer ID</label>
-                              <input name='customerId' type="text" class="form-control" id="customerId" aria-describedby="customerId">
+                    <div class="row my-5">
+                        <p class="h1">Welcome to <span class="text-info">ChattChiro</span></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6">
+                            <div class='row'>    
+                                <div class="col-3 text-info ">
+                                    <i class="fas fa-ambulance fa-3x bg-white p-2"></i>
+                                </div>
+                                <div class="col-8">
+                                    <p class="h6">Emergency Help</p>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                                </div>
                             </div>
-                            <div class="form-group">
-                              <label for="password">Password</label>
-                              <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
-                            <a href="patients/patientregistration.jsp" class="btn btn-primary">Sign Up!</a>
                         </div>
+                        <div class="col-md-12 col-lg-6">
+                            <div class='row'>    
+                                <div class="col-3 text-info">
+                                    <i class="fas fa-user-md fa-3x bg-white p-2"></i>
+                                </div>
+                                <div class="col-8">
+                                    <p class="h6">Qualified Doctors</p>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <div class='row'>    
+                                <div class="col-3 text-info">
+                                    <i class="fas fa-map-marker-alt fa-3x bg-white p-2"></i>
+                                </div>
+                                <div class="col-8">
+                                    <p class="h6">Location & Directions</p>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <div class='row'>    
+                                <div class="col-3 text-info">
+                                    <i class="fas fa-stethoscope fa-3x bg-white p-2"></i>
+                                </div>
+                                <div class="col-8">
+                                    <p class="h6">Medical Treatment</p>
+                                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class='col-3 bg-white'>
+                     <p class="text-info h5 my-5">APPOINTMENT FORM</p>
+                     <form action="PatientLoginServletDB" method='post' class='card  border-0 bg-transparent'>
+                            <div class="form-group">
+                              <input name='lastName' type="text" class="form-control form-control-lg" id="customerId" placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                              <input name='firstName' type="text" class="form-control form-control-lg" id="customerId" placeholder="Last Name">
+                            </div>
+                            <div class="form-group">
+                              <input name='customerId' type="text" class="form-control form-control-lg" id="customerId" placeholder="Customer ID">
+                            </div>
+                            <div class="form-group">
+                              <input name='password' type="password" class="form-control form-control-lg" id="customerId" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                              <input type="email" name="" class="form-control form-control-lg" placeholder="Email" id="exampleInputPassword1">
+                            </div>
+                            <button type="submit" class="btn btn-info">Sign Up</button>
                     </form>
                  </div>
             </div>  
