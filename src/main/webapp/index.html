@@ -21,6 +21,7 @@ link (rel/href) - Links to external Stylesheet through both external link and st
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://kit.fontawesome.com/3bead4d2e9.js" crossorigin="anonymous"></script>
     </head>
 <!--
 Body of HTML Containing all the content inputted, Login Box for user to enter inputs
@@ -38,82 +39,82 @@ input - Specifies a input field for user to enter information (Id, Password).
 -->
     <body >
         <div id="index_container" class='container-fluid'>
-            <div class='row'>
-                <nav class="navbar navbar-light bg-light col-12">
+            <div class='row '>
+                <nav class="navbar navbar-light bg-light col-12 shadow ">
                     <a href="#" class="navbar-brand">ChattChiro</a>
                     <button class="btn btn-primary">Book Appointment</button>
                 </nav>
             </div> 
-            <div class="row bg-white">
+            <div class="row bg-white mt-4 ">
                 <div class="col-4 text-center">
                     <img src="images/home_logo.png" class="img-fluid" alt="Responsive image">
                 </div>
                 <div class="col-4 ">
                     <div class="row no-gutters align-items-center" style="min-height:150px;">
-                        <div class="col-md-4">
-                           <i class="fas fa-clinic-medical"></i>
+                        <div class="col-md-2 text-info">
+                           <i class="fas fa-phone-alt fa-3x"></i>
                         </div>
                         <div class="col-md-8">
-                             <p class="card-text">Free Call +1 234 456 78910</p>
-                             <p class="card-text"><small class="text-muted">Call Us Now 24/7 Customer Support</small></p>
+                            <p class="mb-0"><span class="text-info">Free Call</span> +1 234 456 78910</p>
+                            <p class=""><small class="text-muted">Call Us Now 24/7 Customer Support</small></p>
                         </div>
                     </div>
-    
                 </div>
                 <div class="col-4">
-                     <div class="row no-gutters align-items-center" style="min-height:150px;">
-                        <div class="col-md-4">
-                           <i class="fas fa-clinic-medical"></i>
+                    <div class="row no-gutters align-items-center" style="min-height:150px;">
+                        <div class="col-md-2 text-info">
+                           <i class="fas fa-clinic-medical fa-3x"></i>
                         </div>
                         <div class="col-md-8">
-                             <p class="card-text">Our Location</p>
-                             <p class="card-text"><small class="text-muted">198 West 21th Street, Suite 721 New York NY 10016</small></p>
+                             <p class="mb-0">Our Location</p>
+                             <p class=""><small class="text-muted">198 Enz Street, Suite 721 New York NY 10016</small></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <ul class="col-12 nav justify-content-center py-3 bg-warning">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">ABOUT</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">SERVICE</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">DOCTORS</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">DEPARTMENTS</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">PRICING</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">BLOG</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">CONTACT</a>
-                    </li>
-                  </ul>
-            </div>
-            <div id="home-banner">
-                <div class="row">
-                    <div col="col-6">
-                        
-                    </div>
+            <div class="row justify-content-center bg-warning ">
+                <div class="col-1 bg-white py-3">
+                  <a class="nav-link active" href="#">HOME</a>
                 </div>
+                <div class="col-1 py-3">
+                  <a class="nav-link" href="#">ABOUT</a>
+                </div>
+                <div class="col-1 py-3">
+                  <a class="nav-link" href="#">SERVICE</a>
+                </div>
+                <div class="col-1 py-3">
+                  <a class="nav-link" href="#">DOCTORS</a>
+                </div>
+                <div class="col-1 py-3">
+                  <a class="nav-link" href="#">PRICING</a>
+                </div>
+                <div class="col-1 py-3">
+                  <a class="nav-link" href="#">GALLERY</a>
+                </div>
+                 <div class="col-1 py-3">
+                  <a class="nav-link" href="#">FAQ's</a>
+                </div>
+                <div class="col-1 py-3">
+                  <a class="nav-link" href="#">BLOG</a>
+                </div>
+                <div class="col-1 py-3">
+                  <a class="nav-link" href="#">CONTACT</a>
+                </div>
+            </div>
+            <div id="home-banner" class="row justify-content-end">
+                <div class="col-6 banner-div">
+                    <div class="row ">
+                        <div class="col-12 my-5 pt-5">
+                            <p class="h1 mt-5 text-left text-white">The Most Valuable</p>
+                            <p class="h1 text-left text-white"> Thing is Your Health</p>
+                        </div>     
+                    </div>
+                </div> 
             </div>
             <div  class="row">
                 <div class='col-6'>
                     
-                <div>
+                </div>
                  <div class='col-6 align-self-end' style="background-color:rgba(12, 11, 95, 0.5); border-radius: 15px 30px;">
                      <form action="PatientLoginServletDB" method='post' class='card  border-0 bg-transparent text-white' >
                         <div class='card-body my-5'>
@@ -130,9 +131,7 @@ input - Specifies a input field for user to enter information (Id, Password).
                         </div>
                     </form>
                  </div>
-            </div>
-             
-            
+            </div>  
         </div>     
 <!-- Script points to external script file through src attribute to URL -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
