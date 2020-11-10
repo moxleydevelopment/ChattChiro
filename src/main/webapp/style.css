@@ -18,7 +18,7 @@ background-reoeat - tells image not to repeat.
 height - sets height of image.
 */
 
-#index_container {
+#home-banner {
     background-image: url('images/index_bg.png');
     background-size: cover;
     background-repeat: no-repeat;
