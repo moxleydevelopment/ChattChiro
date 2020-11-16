@@ -53,11 +53,12 @@ class - Specifies classname for element.
 --%>
     <body >
         <div id="index_container" class='container-fluid'>
-            <div class='row'>
-                <nav class="navbar navbar-light  col-12" style="background-color:rgba(12, 11, 95, 0.5);">
-                    <a class="navbar-brand">ChattChiro</a>
-                 </nav>
-            </div> 
+            <div class='row '>
+                <nav class="navbar navbar-light bg-light col-12 shadow  py-0">
+                    <a href="index.html" class="navbar-brand">ChattChiro</a>
+                    <button class="btn btn-info" >Login Out</button>
+                </nav>
+            </div>
             
            
             <h class='h1'>Hello <%=p1.getFirstName()%> <%=p1.getLastName()%> </h>
