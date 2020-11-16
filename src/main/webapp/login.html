@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<!--
+Nicholas Hall, Timothy Wolf, Donya Moxley, Jason Fleurival, Benjamin Ard
+CIST2931
+Team 3
+ChattChiro - Chiropractors
+-->
+
+<html>
+<!--
+Heading of HTML Containing Properties of Web Page
+title - Title of the document.
+charset - Declares the document's character encoding through meta tag.
+name/content - Displays document based on device through meta tag.
+link (rel/href) - Links to external Stylesheet through both external link and style.css.
+-->
+    <head>
+        <title>ChattChiro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://kit.fontawesome.com/3bead4d2e9.js" crossorigin="anonymous"></script>
+    </head>
+<!--
+Body of HTML Containing all the content inputted, Login Box for user to enter inputs
+div - Used as a container for elements in code.
+nav - Section of pages used to provide navigation links in code.
+id - HTML attribute used to give a unique id for element.
+class - Specifies classname for element.
+style - Specifies how HTML elements render in browser (Colors of specific elements).
+form - Used to create an HTML form for user input.
+button - Defines a clickable button for user.
+p - Defines a paragraph.
+label - Defines a label for specific elements used (Id, Password).
+href - links to a specific url or .jsp.
+input - Specifies a input field for user to enter information (Id, Password).
+-->
+    <body >
+        <div id="index_container" class='container-fluid'>
+            <div class='row '>
+                <nav class="navbar navbar-light bg-light col-12 shadow  py-2">
+                    <a href="index.html" class="navbar-brand">ChattChiro</a>
+                    <ul class="nav navbar-right">
+                        <li class="nav-item"><a href="register.html" class="btn btn-info">Register</a></li>
+                        <li class="nav-item ml-2"><a href="login.html" class="btn btn-info">Login</a></li>
+                    </ul>
+                </nav>
+            </div> 
+            <div class="row bg-white mt-4 ">
+                <div class="col-4 text-center">
+                    <a href="index.html"><img src="images/home_logo.png" class="img-fluid" alt="Responsive image"></a>
+                </div>
+                <div class="col-4 ">
+                    <div class="row no-gutters align-items-center" style="min-height:150px;">
+                        <div class="col-md-2 text-info">
+                           <i class="fas fa-phone-alt fa-3x"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="mb-0"><span class="text-info">Free Call</span> +1 234 456 78910</p>
+                            <p class=""><small class="text-muted">Call Us Now 24/7 Customer Support</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row no-gutters align-items-center" style="min-height:150px;">
+                        <div class="col-md-2 text-info">
+                           <i class="fas fa-clinic-medical fa-3x"></i>
+                        </div>
+                        <div class="col-md-8">
+                             <p class="mb-0">Our Location</p>
+                             <p class=""><small class="text-muted">198 Enz Street, Marietta GA 30060</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center" style="background-image: linear-gradient(to bottom right, blue, green);">
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="index.html">HOME</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="about.html">ABOUT</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="services.html">SERVICE</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="doctors.html">DOCTORS</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="pricing.html">PRICING</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="faq.html">FAQ</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="contact.html">CONTACT</a>
+                </div>
+            </div>
+            <div class="row justify-content-center pt-3">
+                        <form class="form-signin" action="PatientLoginServletDB" method="POST">
+                            <i class="mb-4 fas fa-key fa-3x"></i>
+                            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                            <label for="customerId" class="sr-only">ID</label>
+                            <input type="text" id="customerId" name="customerId" class="form-control" placeholder="ID" required autofocus>
+                            <label for="password" class="sr-only">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        </form>
+            </div>  
+        </div>     
+<!-- Script points to external script file through src attribute to URL -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>
