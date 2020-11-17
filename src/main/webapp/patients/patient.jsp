@@ -111,7 +111,7 @@ class - Specifies classname for element.
             </div>
             <div class="row mt-5">
                     <div class="col-auto text-center">
-                        <img src="https://avatars.dicebear.com/api/initials/:seed.svg?options[height]=100" alt="profile initials">
+                        <img src="<%=p1.getInitials()%>" alt="profile initials">
                     </div>
                     <div class="col-6">
                         <div class="col-12"><h class='h1'>Hello <%=p1.getFirstName()%> <%=p1.getLastName()%> </h></div>
@@ -120,9 +120,9 @@ class - Specifies classname for element.
                         <div class="col-12"><h class='h6'>Email: <%=p1.getEmail()%></h></div> 
                     </div>
                     <div class="col-auto">
-                        <a href="./patients/updatepatient.jsp" class="btn btn-primary">Update Profile</a>
-                        <button type="button" class="btn btn-secondary">Book Appointments</button>
-                        <button type="button" class="btn btn-success">View History</button>
+                        <a href="./patients/updatepatient.jsp" class="btn btn-info">Update Profile</a>
+                        <button type="button" class="btn btn-info">Book Appointments</button>
+                        <button type="button" class="btn btn-info">View History</button>
                     </div>
             </div>
             <div class="row row-cols-4 my-2">
@@ -132,7 +132,7 @@ class - Specifies classname for element.
                 <div class="col">Column</div>
             </div>
             <table class="table">
-                <thead class="thead-dark">
+                <thead class="bg-info">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">First</th>

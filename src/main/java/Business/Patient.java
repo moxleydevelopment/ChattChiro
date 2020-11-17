@@ -370,6 +370,18 @@ public class Patient {
         insCo = input;
     }
     
+    /**
+     * Gets the address of the current patient.
+     * @return  A string representing the patient's initials.
+     */
+    public String getInitials(){
+        String intials; 
+        intials = firstName.charAt(0) + " ";
+        intials = intials + lastName.charAt(0);
+        String url = "https://avatars.dicebear.com/api/initials/:"+intials+".svg?options[height]=100";
+
+        return url;
+    }
     public static void main(String[] args) throws Exception{
         Patient c1 = new Patient();
         c1.selectDB("P101");
