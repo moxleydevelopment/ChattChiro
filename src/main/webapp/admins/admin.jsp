@@ -122,13 +122,10 @@ input - Specifies a input field for user to enter information (Id, Password).
                   <a class="nav-link text-light" href="about.html">ABOUT</a>
                 </div>
                 <div class="col-1 py-2">
-                  <a class="nav-link text-light" href="services.html">SERVICE</a>
+                  <a class="nav-link text-light" href="services.html">SERVICES</a>
                 </div>
                 <div class="col-1 py-2">
                   <a class="nav-link text-light" href="doctors.html">DOCTORS</a>
-                </div>
-                <div class="col-1 py-2">
-                  <a class="nav-link text-light" href="pricing.html">PRICING</a>
                 </div>
                 <div class="col-1 py-2">
                   <a class="nav-link text-light" href="faq.html">FAQ</a>
