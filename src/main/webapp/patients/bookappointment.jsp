@@ -24,9 +24,9 @@
     </head>
     <body>
         <div class='row '>
-          <nav class="navbar navbar-light bg-light col-12 shadow  py-0">
+          <nav class="navbar navbar-light bg-light col-12 shadow py-2">
               <a href="index.html" class="navbar-brand">ChattChiro</a>
-              <button class="btn btn-info" >Log Out</button>
+              <button class="btn btn-info" >Logout</button>
           </nav>
         </div>
         <div class="row justify-content-center mt-5" style="background-image: linear-gradient(to bottom right, blue, green);">
