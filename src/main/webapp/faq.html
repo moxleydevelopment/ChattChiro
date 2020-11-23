@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<!--
+Nicholas Hall, Timothy Wolf, Donya Moxley, Jason Fleurival, Benjamin Ard
+CIST2931
+Team 3
+ChattChiro - Chiropractors
+-->
+
+<html>
+<!--
+Heading of HTML Containing Properties of Web Page
+title - Title of the document.
+charset - Declares the document's character encoding through meta tag.
+name/content - Displays document based on device through meta tag.
+link (rel/href) - Links to external Stylesheet through both external link and style.css.
+-->
+    <head>
+        <title>ChattChiro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://kit.fontawesome.com/3bead4d2e9.js" crossorigin="anonymous"></script>
+    </head>
+<!--
+Body of HTML Containing all the content inputted, Login Box for user to enter inputs
+div - Used as a container for elements in code.
+nav - Section of pages used to provide navigation links in code.
+id - HTML attribute used to give a unique id for element.
+class - Specifies classname for element.
+style - Specifies how HTML elements render in browser (Colors of specific elements).
+form - Used to create an HTML form for user input.
+button - Defines a clickable button for user.
+p - Defines a paragraph.
+label - Defines a label for specific elements used (Id, Password).
+href - links to a specific url or .jsp.
+input - Specifies a input field for user to enter information (Id, Password).
+-->
+    <body >
+        <div id="index_container" class='container-fluid'>
+            <div class='row '>
+                <nav class="navbar navbar-light bg-light col-12 shadow  py-2">
+                    <a href="index.html" class="navbar-brand">ChattChiro</a>
+                    <ul class="nav navbar-right">
+                        <li class="nav-item"><a href="register.html" class="btn btn-info">Register</a></li>
+                        <li class="nav-item ml-2"><a href="login.html" class="btn btn-info">Login</a></li>
+                    </ul>
+                </nav>
+            </div> 
+            <div class="row bg-white mt-4 ">
+                <div class="col-4 text-center">
+                    <a href="index.html"><img src="images/home_logo.png" class="img-fluid" alt="Responsive image"></a>
+                </div>
+                <div class="col-4 ">
+                    <div class="row no-gutters align-items-center" style="min-height:150px;">
+                        <div class="col-md-2 text-info">
+                           <i class="fas fa-phone-alt fa-3x"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="mb-0"><span class="text-info">Free Call</span> +1 234 456 78910</p>
+                            <p class=""><small class="text-muted">Call Us Now 24/7 Customer Support</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row no-gutters align-items-center" style="min-height:150px;">
+                        <div class="col-md-2 text-info">
+                           <i class="fas fa-clinic-medical fa-3x"></i>
+                        </div>
+                        <div class="col-md-8">
+                             <p class="mb-0">Our Location</p>
+                             <p class=""><small class="text-muted">198 Enz Street, Marietta GA 30060</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center" style="background-image: linear-gradient(to bottom right, blue, green);">
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="index.html">HOME</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="about.html">ABOUT</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="services.html">SERVICES</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="doctors.html">DOCTORS</a>
+                </div>
+                <div class="col-1 bg-white py-2">
+                  <a class="nav-link active" href="faq.html">FAQ</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="contact.html">CONTACT</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                    <h1 class="display-4">FAQs</h1>
+                    <p class="lead">Below is a list of our most frequently asked questions. Click on any of them to expand.<p>
+                  </div>              
+            </div>
+            <div class="row justify-content-center pt-3">
+                <div class="col-lg-8 mx-auto">
+                    <div id="accordion">
+                        <div class="card m-1">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                What is ChattChiro?
+                            </button>
+                            </h5>
+                        </div>
+                    
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                ChattChiro is a small Chiropractic Center focused on getting you where you want to be on your path to good health. ChattChiro is about being well and staying well! If you are interested in scheduling an appointment today, please create an account or login at the top right of the page. 
+                            </div>
+                        </div>
+                        </div>
+                        <div class="card m-1">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                What do I do if I don't have an account?
+                            </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                Sign up for an account using the sign up button on the homepage. If further information is needed, review the "Creating An Account" section below. 
+                            </div>
+                        </div>
+                        </div>
+                        <div class="card m-1">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                How do I change my information? I have recently changed emails. 
+                            </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                Simply log into your account and locate the "Update my Information" section on your patient dashboard. 
+                            </div>
+                        </div>
+                        </div>
+                        <div class="card m-1">
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    How do I view my appointment? 
+                                </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                <div class="card-body">
+                                    You can view your upcoming appointments after signing in using your ID and Password. Upon logging in you will be directed to your patient dashboard where your next appointment will be immediately visible.  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card m-1">
+                            <div class="card-header" id="headingFive">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Where do I login?
+                                </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                <div class="card-body">
+                                    Our login service is immediately available upon visiting our website, at the top right of the page.  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card m-1">
+                            <div class="card-header" id="headingSix">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    What information do I use to login?
+                                </button>
+                                </h5>
+                            </div>
+                            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                <div class="card-body">
+                                    You may sign in using your Customer ID and Password that you created when you signed up.   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card m-1">
+                            <div class="card-header" id="headingSeven">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                    Do I need an appointment to create an account?
+                                </button>
+                                </h5>
+                            </div>
+                            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                                <div class="card-body">
+                                    No! You can simply visit our website and create an account using the sign up feature, located at the bottom right of the home page.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card m-1">
+                            <div class="card-header" id="headingEight">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                    What should I expect from my first visit?
+                                </button>
+                                </h5>
+                            </div>
+                            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+                                <div class="card-body">
+                                    During your first visit we will typically identify what the source of your pain is, then we will take x-rays to attempt to identify any underlying conditions. During your second visit your doctor will then explain the results of this examination and outline an appropriate course of action. 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                    <h1 class="display-4">Guides</h1>
+                    <p class="lead">Below are a few guides to help you use some of the sites functions.<p>
+                </div>              
+            </div>
+            <div class="row">
+                <div class="px-3 py-3 pt-md-5 pb-md-4 col-lg-6 mx-auto">
+                    <h2 class="pb-3">Signing Up</h2>
+                    <ol>
+                        <li>Find the "new patient form" located at the bottom right of the homepage of the website. (Alternatively, there is a "register" button at the top of each page that isn't the home page.)<br><img src="images/guides/newpatientform.png"></li>
+                        <li>Enter your user information into the form.</li>
+                        <li>Click "Sign up". You will then be forwarded to your patient dashboard.</li>
+                    </ol>
+                    <h2 class="pb-3">Logging In</h2>
+                    <ol>
+                        <li>Find the "Login" button located at the top right of any page of the website.<br><img class="py-3" src="images/guides/loginbutton.png"></li>
+                        <li>Enter your user name in the designated text box.</li>
+                        <li>Enter your password in the designated text box.</li>
+                        <li>Click "Sign In". You will then be forwarded to your patient dashboard.</li>
+                    </ol>
+                    <h2 class="pb-3">Updating Your Profile</h2>
+                    <ol>
+                        <li>Follow the steps from "Logging In" above to login to your user account.</li>
+                        <li>On the patient dashboard, you will find a button labeled "Update Profile". Click it.<br><img src="images/guides/updateprofile1.png"></li>
+                        <li>Once you click the update profile button you will be sent to the update profile page.<br><img class="py-3" src="images/guides/updateprofile2.png"></li>
+                        <li>Make the appropriate changes to your profile here. Note: the fields are pre-populated with your information, so you only need to fill in what you want to update.</li>
+                        <li>Once you are satisfied with your updates, click the "Update" button.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>     
+<!-- Script points to external script file through src attribute to URL -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

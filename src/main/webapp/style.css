@@ -67,3 +67,7 @@ height - sets height of image.
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
   }
+
+  .borderless {
+    border-top: 1px solid Transparent!important;
+  }
