@@ -58,7 +58,7 @@ class - Specifies classname for element.
         <div class='row '>
             <nav class="navbar navbar-light bg-light col-12 shadow  py-0">
                 <a href="index.html" class="navbar-brand">ChattChiro</a>
-                <button class="btn btn-info" >Login Out</button>
+                <button class="btn btn-info" >Log Out</button>
             </nav>
         </div>
         <div class="row bg-white mt-4 ">
