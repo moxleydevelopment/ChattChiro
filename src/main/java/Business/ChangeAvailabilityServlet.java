@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -68,6 +70,8 @@ public class ChangeAvailabilityServlet extends HttpServlet {
                 }
             }
             con.close();
+            RequestDispatcher rd = request.getRequestDispatcher("/admins/admin.jsp");
+            rd.forward(request, response);
         } catch (Exception e) {
             System.out.println(e);
         }
