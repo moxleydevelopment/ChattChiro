@@ -32,6 +32,7 @@ public class Patient {
     private String address;
     private String email;
     private String insCo;
+    public List<Appointment> appointmentList;
     
     public Patient(){
         this("", "", "", "", "");
@@ -52,6 +53,7 @@ public class Patient {
         firstName = firstNameIn;
         lastName = lastNameIn;
         email = emailIn;
+       
     }
     
     /**
@@ -101,12 +103,13 @@ public class Patient {
                 //insCo = rs.getString(7);
                 rs = null;
                 con.close();
+                getAppointments();
                 return true;
             } else {
                 con.close();
                 return false;
             }
-            
+           
             
             
         } catch (Exception e){
@@ -117,6 +120,7 @@ public class Patient {
                 return false;
             }
         }
+         
     }
     
     /**
@@ -211,7 +215,7 @@ public class Patient {
             System.out.println("Attempting to update patient record in database.");
             
             Statement statement = con.createStatement();
-            String sql = String.format("UPDATE \"Patients\" SET password = '%s', firstName = '%s', lastName = '%s', email = '%s' WHERE id = '%s';", password, firstName, lastName, emailIn, IDIn);
+            String sql = String.format("UPDATE \"Patients\" SET \"password\" = '%s', \"firstName\" = '%s', \"lastName\" = '%s', \"email\" = '%s' WHERE \"id\" = '%s';", pwdIn, firstName, lastName, emailIn, IDIn);
             System.out.println("SQL String: " + sql);
             statement.execute(sql);  
             con.close();
@@ -221,7 +225,7 @@ public class Patient {
     }
 
     public List<Appointment> getAppointments() throws Exception {
-        List<Appointment> appointmentList = new ArrayList<Appointment>();
+        appointmentList = new ArrayList<Appointment>();
         try {
             Connection con;
             Class.forName("org.postgresql.Driver");
