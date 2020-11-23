@@ -140,16 +140,19 @@ input - Specifies a input field for user to enter information (Id, Password).
             <div class="row justify-content-center" style="background-color: rgb(245,245,245);">
                 <% if (a1 != null){ %>
                   
-                      <div class='col-10 mt-4' style="background-color:rgba(12, 11, 95, 0.8); border-radius: 5px;">
+                      <div class='col-10 mt-4 card px-0'>
                         
-                          <form action="ChangeAvailabilityServlet" method='post' class='card border-0 bg-transparent text-white'>
-                            <div class='card-body my-2'>
-                              <h2 class="pb-2 text-center">Weekly Schedule</h2>
+                          <form action="ChangeAvailabilityServlet" method='post'>
+                            <div class="card-header">
+                            <h2 class="text-center my-0 font-weight-normal">Weekly Schedule</h2>
+                            </div>
+                            <div class='card-body my-2 px-5'>
+                              
                               <div class="card mb-3">
-                                <div class="table-responsive p-1" style="background: #ddd; border-color: #ddd";>
-                                  <table class="table mb-0" style="background: #ddd;">
+                                <div class="table-responsive p-1">
+                                  <table class="table mb-0">
                                     <tr>
-                                      <th>Doctor:</th>
+                                      <th class="borderless">Doctor:</th>
                                       <% 
                                         int count = 0;
                                         int x = 0;
@@ -159,7 +162,7 @@ input - Specifies a input field for user to enter information (Id, Password).
                                             continue;
                                           } else {
                                       %>
-                                            <th class="text-center"><%= startDate.plusDays(x).format(formatter) %></th>
+                                            <th class="text-center borderless"><%= startDate.plusDays(x).format(formatter) %></th>
                                       <%
                                             count += 1;
                                             x += 1;
@@ -212,10 +215,13 @@ input - Specifies a input field for user to enter information (Id, Password).
                 Gives option to add new Chiropractor to data from user added information on page.
                 --%>
 
-                      <div class="col-4" style="background-color:rgba(12, 11, 95, 0.8); border-radius: 5px;">
-                        <form action="AddChiropractorServlet" method='post' class='card  border-0 bg-transparent text-white'>
-                          <div class='card-body my-3'>
-                            <h2>Add Chiropractor:</h2>
+                      <div class="col-4 card px-0">
+                        <div class="card-header">
+                          <h2 class="text-center my-0 font-weight-normal">Add Chiropractor:</h2>
+                        </div>
+                        <form action="AddChiropractorServlet" method='post' class='card  border-0'>
+                          <div class='card-body my-3 px-5'>
+                            
                             <div class="form-group">
                               <label for="chiroId">ID</label>
                               <input name='chiroId' type="text" class="form-control" id="chiroId" aria-describedby="chiroId">
