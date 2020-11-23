@@ -55,18 +55,69 @@ class - Specifies classname for element.
 --%>
     <body >
         <div id="index_container" class='container-fluid'>
-            <div class='row'>
-                <nav class="navbar navbar-light  col-12" style="background-color:rgba(12, 11, 95, 0.5);">
-                    <a class="navbar-brand">ChattChiro</a>
-                 </nav>
+            <div class='row '>
+                <nav class="navbar navbar-light bg-light col-12 shadow  py-2">
+                    <a href="index.html" class="navbar-brand">ChattChiro</a>
+                    <ul class="nav navbar-right">
+                        <li class="nav-item"><a href="register.html" class="btn btn-info">Register</a></li>
+                        <li class="nav-item ml-2"><a href="login.html" class="btn btn-info">Login</a></li>
+                    </ul>
+                </nav>
             </div> 
-            <br>
+            <div class="row bg-white mt-4 ">
+                <div class="col-4 text-center">
+                    <a href="index.html"><img src="images/home_logo.png" class="img-fluid" alt="Responsive image"></a>
+                </div>
+                <div class="col-4 ">
+                    <div class="row no-gutters align-items-center" style="min-height:150px;">
+                        <div class="col-md-2 text-info">
+                           <i class="fas fa-phone-alt fa-3x"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="mb-0"><span class="text-info">Free Call</span> +1 234 456 78910</p>
+                            <p class=""><small class="text-muted">Call Us Now 24/7 Customer Support</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row no-gutters align-items-center" style="min-height:150px;">
+                        <div class="col-md-2 text-info">
+                           <i class="fas fa-clinic-medical fa-3x"></i>
+                        </div>
+                        <div class="col-md-8">
+                             <p class="mb-0">Our Location</p>
+                             <p class=""><small class="text-muted">198 Enz Street, Marietta GA 30060</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center" style="background-image: linear-gradient(to bottom right, blue, green);">
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="index.html">HOME</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="about.html">ABOUT</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="services.html">SERVICES</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="doctors.html">DOCTORS</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="faq.html">FAQ</a>
+                </div>
+                <div class="col-1 py-2">
+                  <a class="nav-link text-light" href="contact.html">CONTACT</a>
+                </div>
+            </div>
             <div class='row align-items-center justify-content-center'>
-                <div class="col-4" style="background-color:rgba(12, 11, 95, 0.8); border-radius: 15px 30px;">
-                    <form action="UpdateDoctorServlet" method='post' class='card  border-0 bg-transparent text-white'>
-                        <div class='card-body my-5'>
-                            <h1>Appointments for <%= selectedDate.format(formatter) %>:</h1>
-                            <table class="table" style="background: #ddd">
+                <div class="col-4 mt-4">
+                    <form action="UpdateDoctorServlet" method='post' class='card'>
+                        <div class="card-header">
+                        <h1 class="text-center my-0 font-weight-normal">Appointments for <%= selectedDate.format(formatter) %>:</h1>
+                        <div class='card-body'>
+                            <table class="table">
                                 <tr>
                                     <th>Patient Name</th>
                                     <th>Procedure</th>
