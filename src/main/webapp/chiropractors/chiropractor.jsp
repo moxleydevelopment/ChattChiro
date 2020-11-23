@@ -194,7 +194,7 @@ class - Specifies classname for element.
                 </div>
             </div>
 
-            <div class='row align-items-center justify-content-center mt-4'>
+            <div class='row align-items-center justify-content-center mt-4 pb-4'>
                 <div class="col-4">
                     <form action="ViewApptsByPatientServlet" method='post' class='card'>
                     <div class="card-header">
@@ -213,6 +213,34 @@ class - Specifies classname for element.
                     </form>
                 </div>
             </div>
+
+            <div class="row py-4" style="background-color: rgb(245,245,245);">
+                        <div class="px-3 pb-3 col-lg-6 mx-auto">
+                            <h2 class="pb-3 display-4">Updating your Information</h2>
+                            <ol>
+                                <li>Make the appropriate changes to your profile on the page above (under the "Update My Info" heading). Note: the fields are pre-populated with your information, so you only need to fill in what you want to update.</li>
+                                <li>Once you are satisfied with your updates, click the "Update" button.</li>
+                            </ol>
+                            <h2 class="py-3 display-4">View your Appointments</h2>
+                            <ol>
+                                <li>To view a list of your upcoming appointments, find the section header "View your appointments" on the page above.<li>
+                                <li>Select the desired day from the dropdown menu.</li>
+                                <li>Click "View" and you will be redirected to a page showing all of your appointments on that day.</li>
+                            </ol>
+                            <h2 class="py-3 display-4">View Patient List</h2>
+                            <ol>
+                                <li>To view a list of every patient you have ever had an appointment with, find the section header "Your patients" on the page above.<li>
+                            </ol>
+                            <h2 class="py-3 display-4">View A Patient's Recent Appointments</h2>
+                            <ol>
+                                <li>To view a list of a given patient's recent appointments, find the section header "Your patients" on the page above.<li>
+                                <li>Select the desired patient from the list.</li>
+                                <li>Click "View Recent Appointments" and you will be redirected to a page showing all of that patient's recent and upcoming appointments.</li>
+                            </ol>
+                            
+                            
+                        </div>
+                     </div>
             
         </div>
 <%-- Script points to external script file through src attribute to URL --%>
