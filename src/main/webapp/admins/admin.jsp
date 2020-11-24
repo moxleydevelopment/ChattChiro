@@ -16,7 +16,7 @@ Defines ContentType for servlet container to run and pageEncoding to read the js
 Imports more than one class using import tag.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Business.Admin,Business.Doctor,Business.DoctorFactory,Business.Availability,java.time.LocalDate,java.time.format.DateTimeFormatter,java.util.Map"%>
+<%@page import="Business.Admin,Business.Doctor,Business.DoctorFactory,Business.Availability,java.time.LocalDate,java.time.DayOfWeek,java.time.format.DateTimeFormatter,java.util.Map"%>
 <%-- 
 Code Uses Scriplets to define date for tables.
 Using getAttribute method to retrieve admin data.
@@ -156,8 +156,9 @@ input - Specifies a input field for user to enter information (Id, Password).
                                       <% 
                                         int count = 0;
                                         int x = 0;
+                                        LocalDate endDate;
                                         while (count < 10){
-                                          if (startDate.plusDays(x).getDayOfWeek().toString() == "SATURDAY" || startDate.plusDays(x).getDayOfWeek().toString() == "SUNDAY"){
+                                          if (startDate.plusDays(x).getDayOfWeek() == DayOfWeek.SATURDAY || startDate.plusDays(x).getDayOfWeek() == DayOfWeek.SUNDAY){
                                             x += 1;
                                             continue;
                                           } else {
@@ -168,6 +169,9 @@ input - Specifies a input field for user to enter information (Id, Password).
                                             x += 1;
                                           }
                                         }
+                                        endDate = startDate.plusDays(x-1);
+                                        System.out.println(endDate);
+                                        Map<String, Map<String, Boolean>> availableMap = Availability.getAvailabilityBetweenDates(startDate, endDate);
                                       %>
 
                                     </tr>
@@ -178,18 +182,31 @@ input - Specifies a input field for user to enter information (Id, Password).
                                         count = 0;
                                         x = 0;
                                         while (count < 10){
-                                          if (startDate.plusDays(x).getDayOfWeek().toString() == "SATURDAY" || startDate.plusDays(x).getDayOfWeek().toString() == "SUNDAY"){
+                                          LocalDate currentDate = startDate.plusDays(x);
+                                          if (currentDate.getDayOfWeek() == DayOfWeek.SATURDAY || currentDate.getDayOfWeek() == DayOfWeek.SUNDAY){
                                             x += 1;
                                             continue;
                                           } else {
-                                            Boolean available = Availability.getAvailability(entry.getValue().getID(), startDate.plusDays(x).toString());
+                                            String curDocID = entry.getValue().getID();
+                                            Boolean available;
+                                            if (availableMap.get(curDocID) != null){
+                                              Map<String, Boolean> curDocAvailability = availableMap.get(curDocID);
+                                              if (curDocAvailability.get(currentDate.toString()) != null){
+                                                available = curDocAvailability.get(currentDate.toString());
+                                              } else {
+                                                available = false;
+                                              }
+                                            } else {
+                                              available = false;
+                                            }
+                                            
                                       %>
                                       <td class="text-center">
                                         <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" <% if (available){ %>checked<% } %> name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(x) %>" value="Y" id="<%= entry.getValue().getID() %>Y<%= x %>"><label class="form-check-label" for="<%= entry.getValue().getID() %>Y<%= x %>">Y</label>
+                                          <input class="form-check-input" type="radio" <% if (available){ %>checked<% } %> name="<%= curDocID %>,<%= currentDate %>" value="Y" id="<%= curDocID %>Y<%= x %>"><label class="form-check-label" for="<%= curDocID %>Y<%= x %>">Y</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" <% if (!available){ %>checked<% } %> name="<%= entry.getValue().getID() %>,<%= startDate.plusDays(x) %>" value="N" id="<%= entry.getValue().getID() %>N<%= x %>"><label class="form-check-label" for="<%= entry.getValue().getID() %>N<%= x %>">N</label>
+                                          <input class="form-check-input" type="radio" <% if (!available){ %>checked<% } %> name="<%= curDocID %>,<%= currentDate %>" value="N" id="<%= curDocID %>N<%= x %>"><label class="form-check-label" for="<%= curDocID %>N<%= x %>">N</label>
                                         </div>
                                       </td>
                                       <% 
