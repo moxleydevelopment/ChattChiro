@@ -134,7 +134,7 @@ input - Specifies a input field for user to enter information (Id, Password).
                   <a class="nav-link text-light" href="contact.html">CONTACT</a>
                 </div>
             </div>
-            <div class="row justify-content-center pt-3" style="background-color: rgb(245,245,245);">
+            <div class="row justify-content-center pt-3 pb-4" style="background-color: rgb(245,245,245);">
             <h1>Admin Panel</h1>
             </div>
             <div class="row justify-content-center" style="background-color: rgb(245,245,245);">
@@ -209,48 +209,62 @@ input - Specifies a input field for user to enter information (Id, Password).
                         </div>
                       </div>
 
-                    <div class='row align-items-center justify-content-center pt-4 pb-3' style="background-color: rgb(245,245,245);">
-
-                      <%-- 
-                Gives option to add new Chiropractor to data from user added information on page.
-                --%>
-
-                      <div class="col-4 card px-0">
-                        <div class="card-header">
-                          <h2 class="text-center my-0 font-weight-normal">Add Chiropractor:</h2>
-                        </div>
-                        <form action="AddChiropractorServlet" method='post' class='card  border-0'>
-                          <div class='card-body my-3 px-5'>
-                            
-                            <div class="form-group">
-                              <label for="chiroId">ID</label>
-                              <input name='chiroId' type="text" class="form-control" id="chiroId" aria-describedby="chiroId">
-                            </div>
-                            <div class="form-group">
-                              <label for="chiroPwd">Password</label>
-                              <input name='chiroPwd' type="text" class="form-control" id="chiroPwd" aria-describedby="chiroPwd">
-                            </div>
-                            <div class="form-group">
-                              <label for="chiroFName">First Name</label>
-                              <input name='chiroFName' type="text" class="form-control" id="chiroFName" aria-describedby="chiroFName">
-                            </div>
-                            <div class="form-group">
-                              <label for="chiroLName">Last Name</label>
-                              <input name='chiroLName' type="text" class="form-control" id="chiroLName" aria-describedby="chiroLName">
-                            </div>
-                            <div class="form-group">
-                              <label for="chiroEmail">Email</label>
-                              <input name='chiroEmail' type="text" class="form-control" id="chiroEmail" aria-describedby="chiroEmail">
-                            </div>
-                            <div class="form-group">
-                              <label for="chiroOfficeNum">Office Number</label>
-                              <input name='chiroOfficeNum' type="text" class="form-control" id="chiroOfficeNum"
-                                aria-describedby="chiroOfficeNum">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Add Chiropractor</button>
+                    <div class='row align-items-center justify-content-center py-4'>
+                        <div class="col-4 card px-0">
+                          <div class="card-header">
+                            <h2 class="text-center my-0 font-weight-normal">Add Chiropractor:</h2>
                           </div>
-                        </form>
+                          <form action="AddChiropractorServlet" method='post' class='card  border-0'>
+                            <div class='card-body my-3 px-5'>
+                              <div class="form-group">
+                                <label for="chiroId">ID</label>
+                                <input name='chiroId' type="text" class="form-control" id="chiroId" aria-describedby="chiroId">
+                              </div>
+                              <div class="form-group">
+                                <label for="chiroPwd">Password</label>
+                                <input name='chiroPwd' type="text" class="form-control" id="chiroPwd" aria-describedby="chiroPwd">
+                              </div>
+                              <div class="form-group">
+                                <label for="chiroFName">First Name</label>
+                                <input name='chiroFName' type="text" class="form-control" id="chiroFName" aria-describedby="chiroFName">
+                              </div>
+                              <div class="form-group">
+                                <label for="chiroLName">Last Name</label>
+                                <input name='chiroLName' type="text" class="form-control" id="chiroLName" aria-describedby="chiroLName">
+                              </div>
+                              <div class="form-group">
+                                <label for="chiroEmail">Email</label>
+                                <input name='chiroEmail' type="text" class="form-control" id="chiroEmail" aria-describedby="chiroEmail">
+                              </div>
+                              <div class="form-group">
+                                <label for="chiroOfficeNum">Office Number</label>
+                                <input name='chiroOfficeNum' type="text" class="form-control" id="chiroOfficeNum"
+                                  aria-describedby="chiroOfficeNum">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Add Chiropractor</button>
+                            </div>
+                          </form>
+                        </div>
                       </div>
+
+                      <div class="row py-4" style="background-color: rgb(245,245,245);">
+                        <div class="px-3 pb-3 col-lg-6 mx-auto">
+                            <h2 class="pb-3 display-4">Setting the Weekly Schedule</h2>
+                            <ol>
+                                <li>To start setting the weekly schedule, first take note of which day the schedule starts. If it is a
+                                weekday, the schedule will start on today's date and extend 10 business days into the future. If you are
+                                accessing this page on a weekend, the schedule will start on the following Monday and then extend 10 business days.</li>
+                                <li>Simply select the correct radio button for each doctor&mdash;if they are available on that day, select "Y". The default is "N".</li>
+                                <li>When you have set the schedule as desired, click "Update Schedules". The next time you access this page, you should see the updated schedule.</li>
+                            </ol>
+                            <h2 class="py-3 display-4">Adding a Chiropractor</h2>
+                            <ol>
+                                <li>To add a chiropractor, simply fill in the above form labeled "Add Chiropractor".</li>
+                                <li>It is preferable if ID is in the following format: C###&mdash;for example, C202</li>
+                                <li>Click "Add Chiropractor" and a chiropractor account will be created and added to the database.</li>
+                            </ol>
+                        </div>
+                     </div>
                   <%-- 
                 Used if Access to Admin is denied
                 --%>

@@ -56,9 +56,9 @@ class - Specifies classname for element.
     <body >
         <div id="index_container" class='container-fluid'>
         <div class='row '>
-            <nav class="navbar navbar-light bg-light col-12 shadow  py-0">
+            <nav class="navbar navbar-light bg-light col-12 shadow py-2">
                 <a href="index.html" class="navbar-brand">ChattChiro</a>
-                <button class="btn btn-info" >Login Out</button>
+                <button class="btn btn-info" >Logout</button>
             </nav>
         </div>
         <div class="row bg-white mt-4 ">
