@@ -8,6 +8,7 @@ package Business;
  */
 
 import java.io.IOException;
+import java.net.URI;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -49,12 +50,15 @@ public class ChangeAvailabilityServlet extends HttpServlet {
         try {
             Connection con;
             Class.forName("org.postgresql.Driver");
-            if ("/app".equals(System.getenv("HOME"))) {
-                // System.getenv("JDBC_DATABASE_URL");
-                con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
-            } else {
-                con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
-            }
+            if( "/app".equals(System.getenv("HOME"))){
+                URI dbUri = new URI(System.getenv("DATABASE_URL"));
+                String username = dbUri.getUserInfo().split(":")[0];
+                String dbPassword = dbUri.getUserInfo().split(":")[1];
+                String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+                con = DriverManager.getConnection(dbUrl, username, dbPassword);
+             } else {
+                 con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
+             }
             for (String input : request.getParameterMap().keySet()) {
                 for (String value : request.getParameterValues(input)) {
                     System.out.println(input + ": " + value);
