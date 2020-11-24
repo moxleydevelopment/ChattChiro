@@ -239,7 +239,7 @@ input - Specifies a input field for user to enter information (Id, Password).
                               </div>
                               <div class="form-group">
                                 <label for="chiroPwd">Password</label>
-                                <input name='chiroPwd' type="text" class="form-control" id="chiroPwd" aria-describedby="chiroPwd">
+                                <input name='chiroPwd' type="password" class="form-control" id="chiroPwd" aria-describedby="chiroPwd">
                               </div>
                               <div class="form-group">
                                 <label for="chiroFName">First Name</label>
