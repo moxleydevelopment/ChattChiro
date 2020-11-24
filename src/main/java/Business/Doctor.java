@@ -75,15 +75,15 @@ public class Doctor {
     public boolean selectDB(String id) throws Exception{
         try {
             //this line must be added to work with glassfish
-            Connection con;
             Class.forName("org.postgresql.Driver");
+            Connection con;
              if( "/app".equals(System.getenv("HOME"))){
                     URI dbUri = new URI(System.getenv("DATABASE_URL"));
                     String username = dbUri.getUserInfo().split(":")[0];
                     String dbPassword = dbUri.getUserInfo().split(":")[1];
                     String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
                     con = DriverManager.getConnection(dbUrl, username, dbPassword);
-                 }else{
+                 } else {
                      con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                  }
             System.out.println("Connected to DB.");
@@ -125,7 +125,6 @@ public class Doctor {
      */
     public void insertDB(String IDIn, String pwdIn, String firstNameIn, String lastNameIn, String emailIn, String officeNumIn){
         try {
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection con;
             Class.forName("org.postgresql.Driver");
             if( "/app".equals(System.getenv("HOME"))){
