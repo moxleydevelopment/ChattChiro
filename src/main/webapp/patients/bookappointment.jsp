@@ -4,12 +4,20 @@
     Author     : donyamoxley
 --%>
 
+<%@page import="java.time.DayOfWeek"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.time.LocalDate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Business.Patient"%> 
 
  <% 
             Patient p1;
             p1 = (Patient)session.getAttribute("p1");
+            LocalDate today = LocalDate.now();
+            int plusDays = 1;
+            String[] hourOfDay = {"08:00am", "09:00am","10:00am","11:00am","12:00pm","01:00pm","02:00pm","03:00pm","04:00pm","05:00pm"};
+            String[] daysOfWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday","Friday","Sunday"};
+            System.out.print(today.plusDays(1).getDayOfWeek());
            
 %>
 <!DOCTYPE html>
@@ -52,5 +60,59 @@
             <a class="nav-link text-light" href="contact.html">CONTACT</a>
           </div>
         </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Time</th>
+                
+                <th scope="col"><%=today.getDayOfWeek()%></th>
+                <%for (int count = 1; count < 7; count++){ %>
+                <% if(today.plusDays(plusDays).getDayOfWeek().equals(DayOfWeek.SATURDAY) ){ 
+                    plusDays = plusDays + 2; 
+                %>
+                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>                   
+                    <% }else if(today.plusDays(count).getDayOfWeek().equals(DayOfWeek.SUNDAY)){ 
+                        plusDays = plusDays + 1;
+                    %>
+                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>
+                    <%}else {%>
+                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>
+                    <% plusDays++;}%>
+                <%}%>
+              </tr>
+            </thead>
+            <tbody>
+              <%for (int count = 0; count < 10; count++){ %>
+                <tr>
+                  <th scope="row"><%=hourOfDay[count]%></th>
+                  <th>
+                      <div class="col-12">
+                           <button class="badge badge-pill badge-primary">Name</button>
+                      </div>
+                      <div class="col-12">
+                        <button class="badge badge-pill badge-primary">Full Name</button>   
+                      </div>
+                      <div class="col-12">
+                          <button class="badge badge-pill badge-primary">Longer Name</button>
+                      </div>
+                  </th>
+                  <th>
+                      <div class="col-12">
+                           <button class="badge badge-pill badge-primary">Name</button>
+                      </div>
+                      <div class="col-12">
+                        <button class="badge badge-pill badge-primary">Full Name</button>   
+                      </div>
+                      <div class="col-12">
+                          <button class="badge badge-pill badge-primary">Longer Name</button>
+                      </div>
+                  </th>
+                  
+                </tr>
+               <%}%>
+              
+            </tbody>
+        </table>
+        
     </body>
 </html>
