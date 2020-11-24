@@ -42,7 +42,7 @@ public class AddChiropractorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String chiroId, chiroPwd, chiroFName, chiroLName, chiroEmail, chiroOfficeNum;
-        try (PrintWriter out = response.getWriter()) {
+        try {
             chiroId = request.getParameter("chiroId");
             chiroPwd = request.getParameter("chiroPwd");
             chiroFName = request.getParameter("chiroFName");
@@ -53,12 +53,15 @@ public class AddChiropractorServlet extends HttpServlet {
             Doctor d1 = new Doctor();
             d1.insertDB(chiroId, chiroPwd, chiroFName, chiroLName, chiroEmail, chiroOfficeNum);
 
-            RequestDispatcher rd = request.getRequestDispatcher("/admins/admin.jsp");
-            rd.forward(request, response);
+            request.setAttribute("chiropractorAdded", "success");
 
             } catch (Exception e){
+            request.setAttribute("chiropractorAdded", "failed");
             
-        }   
+        }
+        RequestDispatcher rd = request.getRequestDispatcher("/admins/admin.jsp");
+        rd.forward(request, response);
+        return;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -74,11 +74,13 @@ public class ChangeAvailabilityServlet extends HttpServlet {
                 }
             }
             con.close();
-            RequestDispatcher rd = request.getRequestDispatcher("/admins/admin.jsp");
-            rd.forward(request, response);
+            request.setAttribute("availabilityChanged", "success");
         } catch (Exception e) {
             System.out.println(e);
+            request.setAttribute("availabilityChanged", "failed");
         }
+        RequestDispatcher rd = request.getRequestDispatcher("/admins/admin.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
