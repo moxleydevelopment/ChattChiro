@@ -88,7 +88,7 @@ public class Patient {
                 }
             
             
-            System.out.println("Connected to DB.");
+           
             
             Statement statement = con.createStatement();
             String sql = "SELECT * FROM \"Patients\" where id = '" + id + "'";
@@ -148,7 +148,7 @@ public class Patient {
                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                 }
             
-            System.out.println("Connected to DB.");
+           
             
             Statement statement = con.createStatement();
             String sql = String.format("INSERT INTO \"Patients\" (password, id, \"firstName\", \"lastName\", email) VALUES ('%s', '%s', '%s', '%s', '%s');", pwdIn, IDIn, firstName, lastName, emailIn);
@@ -177,7 +177,7 @@ public class Patient {
                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                 }
             
-            System.out.println("Connected to DB.");
+        
             
             Statement statement = con.createStatement();
             String sql = String.format("DELETE FROM \"Patients\" WHERE id = '%s';", patId);
@@ -239,11 +239,11 @@ public class Patient {
                      con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                  }
 
-            System.out.println("Connected to DB.");
+          
 
             Statement statement = con.createStatement();
             String sql = "SELECT * FROM \"Appointments\" WHERE \"patientID\" = '" + patId + "' ORDER BY timeslot ASC";
-            System.out.println(sql);
+            
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
                 String doctID = rs.getString(1);
