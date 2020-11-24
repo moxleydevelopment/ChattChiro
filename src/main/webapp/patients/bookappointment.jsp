@@ -32,9 +32,9 @@
     </head>
     <body>
         <div class='row '>
-          <nav class="navbar navbar-light bg-light col-12 shadow py-2">
+          <nav class="navbar navbar-light bg-light col-12 shadow  py-0">
               <a href="index.html" class="navbar-brand">ChattChiro</a>
-              <button class="btn btn-info" >Logout</button>
+              <button class="btn btn-info" >Login Out</button>
           </nav>
         </div>
         <div class="row justify-content-center mt-5" style="background-image: linear-gradient(to bottom right, blue, green);">
@@ -85,6 +85,19 @@
               <%for (int count = 0; count < 10; count++){ %>
                 <tr>
                   <th scope="row"><%=hourOfDay[count]%></th>
+                    <%for (int days = 1; days < 7; days++){ %>
+                    <% if(today.plusDays(plusDays).getDayOfWeek().equals(DayOfWeek.SATURDAY) ){ 
+                    plusDays = plusDays + 2; 
+                    %>
+                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>                   
+                    <% }else if(today.plusDays(count).getDayOfWeek().equals(DayOfWeek.SUNDAY)){ 
+                        plusDays = plusDays + 1;
+                    %>
+                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>
+                    <%}else {%>
+                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>
+                    <% plusDays++;}%>
+                    <%}%>
                   <th>
                       <div class="col-12">
                            <button class="badge badge-pill badge-primary">Name</button>
