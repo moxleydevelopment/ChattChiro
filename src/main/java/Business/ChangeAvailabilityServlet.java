@@ -55,13 +55,9 @@ public class ChangeAvailabilityServlet extends HttpServlet {
                 String username = dbUri.getUserInfo().split(":")[0];
                 String dbPassword = dbUri.getUserInfo().split(":")[1];
                 String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-               
                 con = DriverManager.getConnection(dbUrl, username, dbPassword);
-                 System.out.println("DB URI: " + dbUrl);
              } else {
-                
                  con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
-                 System.out.println("DB URI: " + dbUrl);
              }
             for (String input : request.getParameterMap().keySet()) {
                 for (String value : request.getParameterValues(input)) {
