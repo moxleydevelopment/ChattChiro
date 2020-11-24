@@ -188,8 +188,18 @@ input - Specifies a input field for user to enter information (Id, Password).
                                             continue;
                                           } else {
                                             String curDocID = entry.getValue().getID();
-                                            Map<String, Boolean> curDocAvailability = availableMap.get(curDocID);
-                                            Boolean available = curDocAvailability.get(currentDate.toString());
+                                            Boolean available;
+                                            if (availableMap.get(curDocID) != null){
+                                              Map<String, Boolean> curDocAvailability = availableMap.get(curDocID);
+                                              if (curDocAvailability.get(currentDate.toString()) != null){
+                                                available = curDocAvailability.get(currentDate.toString());
+                                              } else {
+                                                available = false;
+                                              }
+                                            } else {
+                                              available = false;
+                                            }
+                                            
                                       %>
                                       <td class="text-center">
                                         <div class="form-check form-check-inline">
