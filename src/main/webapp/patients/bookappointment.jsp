@@ -4,6 +4,13 @@
     Author     : donyamoxley
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Business.Appointment"%>
+<%@page import="java.util.List"%>
+<%@page import="Business.Availability"%>
+<%@page import="java.util.Map"%>
+<%@page import="Business.DoctorFactory"%>
+<%@page import="Business.Doctor"%>
 <%@page import="java.time.DayOfWeek"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.time.LocalDate"%>
@@ -12,12 +19,17 @@
 
  <% 
             Patient p1;
+            DoctorFactory doctorFactory = new DoctorFactory();
+            Availability avil = new Availability();
+            Map<String, Doctor> doctorMap = doctorFactory.getDoctors();
             p1 = (Patient)session.getAttribute("p1");
             LocalDate today = LocalDate.now();
-            int plusDays = 1;
+            int plusDaysHead = 0;
+            int plusDaysBody = 0;
             String[] hourOfDay = {"08:00am", "09:00am","10:00am","11:00am","12:00pm","01:00pm","02:00pm","03:00pm","04:00pm","05:00pm"};
-            String[] daysOfWeek = {"Sunday","Monday", "Tuesday", "Wednesday", "Thursday","Friday","Sunday"};
-            System.out.print(today.plusDays(1).getDayOfWeek());
+  
+            
+            System.out.print(today.plusDays(0).getDayOfWeek());
            
 %>
 <!DOCTYPE html>
@@ -64,62 +76,115 @@
             <thead>
               <tr>
                 <th scope="col">Time</th>
-                
-                <th scope="col"><%=today.getDayOfWeek()%></th>
-                <%for (int count = 1; count < 7; count++){ %>
-                <% if(today.plusDays(plusDays).getDayOfWeek().equals(DayOfWeek.SATURDAY) ){ 
-                    plusDays = plusDays + 2; 
+                <%for (int count = 0; count < 10; count++){ %>
+                <% if(today.plusDays(plusDaysHead).getDayOfWeek().equals(DayOfWeek.SATURDAY) ){ 
+                    int x = plusDaysHead + 2;
+                    plusDaysHead++;
                 %>
-                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>                   
-                    <% }else if(today.plusDays(count).getDayOfWeek().equals(DayOfWeek.SUNDAY)){ 
-                        plusDays = plusDays + 1;
+                        <th scope="col"><%=today.plusDays(x).getDayOfWeek()%></th>                   
+                    <% 
+                       
+                       }else if(today.plusDays(plusDaysHead).getDayOfWeek().equals(DayOfWeek.SUNDAY)){ 
+                            int x = plusDaysHead + 2;
+                            plusDaysHead = plusDaysHead + 3;
                     %>
-                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>
-                    <%}else {%>
-                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>
-                    <% plusDays++;}%>
+                        <th scope="col"><%=today.plusDays(x).getDayOfWeek()%></th>
+                    <%
+                        
+                        }else {%>
+                        <th scope="col"><%=today.plusDays(plusDaysHead).getDayOfWeek()%></th>
+                    <% plusDaysHead++;
+                     }%>
                 <%}%>
               </tr>
             </thead>
             <tbody>
-              <%for (int count = 0; count < 10; count++){ %>
+              <%for (int count = 0; count < 10; count++){
+                   plusDaysBody = 0;
+              %>
                 <tr>
                   <th scope="row"><%=hourOfDay[count]%></th>
-                    <%for (int days = 1; days < 7; days++){ %>
-                    <% if(today.plusDays(plusDays).getDayOfWeek().equals(DayOfWeek.SATURDAY) ){ 
-                    plusDays = plusDays + 2; 
+                    <%for (int days = 0; days < 10; days++){
                     %>
-                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>                   
-                    <% }else if(today.plusDays(count).getDayOfWeek().equals(DayOfWeek.SUNDAY)){ 
-                        plusDays = plusDays + 1;
+                    <th>
+                        <% for(Map.Entry<String, Doctor> entry : doctorMap.entrySet()){ 
+                           
+                        %>
+                            <% if(today.plusDays(plusDaysBody).getDayOfWeek().equals(DayOfWeek.SATURDAY) ){ 
+                                int x = plusDaysBody + 2;
+                                
+                                if(avil.getAvailability(entry.getValue().getID(), today.plusDays(x).toString())){
+                                    List<Appointment> appointmentList = new ArrayList<Appointment>();
+                                    appointmentList = entry.getValue().getAppointments(today.plusDays(x).toString()); 
+                                    System.out.print("*****************"+appointmentList.size());
+                                    if(appointmentList.size() == 0){
+                                        
+                                    
+                            %>
+                           <form action="../SetAppointmentServlet" method='post'>
+                                <input type="hidden" name="apptDate" value="<%=today.plusDays(x).toString() %>">
+                                <input type="hidden" name="doctorId" value="<%=entry.getValue().getID() %>">
+                                <input type="hidden" name="patientId" value="<%=p1.getID() %>">
+                                <input type="hidden" name="timeSlot" value="<%=count %>">
+                                <input type="submit" class="btn btn-info my-1" value="<%=entry.getValue().getLastName() %>"> 
+                            </form>
+                                
+                            <%}else{
+                                 //appointmentList.get(count+1);
+                            %>
+
+                            <%} } 
+                            %> 
+                            <% }else if(today.plusDays(plusDaysBody).getDayOfWeek().equals(DayOfWeek.SUNDAY)){ 
+                                int x = plusDaysBody + 2;
+                                
+                                if(avil.getAvailability(entry.getValue().getID(), today.plusDays(x).toString())){
+                                    List<Appointment> appointmentList = new ArrayList<Appointment>();
+                                    appointmentList = entry.getValue().getAppointments(today.plusDays(x).toString()); 
+                                    System.out.print("*****************"+appointmentList.size());
+                                    if(appointmentList.size() == 0){
+                            %>
+                                <form action="../SetAppointmentServlet" method='post'>
+                                    <input type="hidden" name="apptDate" value="<%=today.plusDays(x).toString() %>">
+                                    <input type="hidden" name="doctorId" value="<%=entry.getValue().getID() %>">
+                                    <input type="hidden" name="patientId" value="<%=p1.getID() %>">
+                                    <input type="hidden" name="timeSlot" value="<%=count %>">
+                                    <input type="submit" class="btn btn-info my-1" value="<%=entry.getValue().getLastName() %>"> 
+                                </form>
+                            <%}}else{
+                                 //appointmentList.get(count+1);
+                            %>    
+                            <%}}else {
+                                if(avil.getAvailability(entry.getValue().getID(), today.plusDays(plusDaysBody).toString())){
+                                    List<Appointment> appointmentList = new ArrayList<Appointment>();
+                                    appointmentList = entry.getValue().getAppointments(today.plusDays(plusDaysBody).toString()); 
+                                    System.out.print("*****************"+appointmentList.size());
+                                    if(appointmentList.size() == 0){
+                            %>
+                                <form action="../SetAppointmentServlet" method='post'>
+                                    <input type="hidden" name="apptDate" value="<%=today.plusDays(plusDaysBody).toString() %>">
+                                    <input type="hidden" name="doctorId" value="<%=entry.getValue().getID() %>">
+                                    <input type="hidden" name="patientId" value="<%=p1.getID() %>">
+                                    <input type="hidden" name="timeSlot" value="<%=count %>">
+                                    <input type="submit" class="btn btn-info my-1" value="<%=entry.getValue().getLastName() %>"> 
+                                </form>
+                            <%}else{
+                                 //appointmentList.get(count+1);
+                            %>    
+                            <% }}
+                            %>
+                        <%}}%>  
+                    </th>
+                    <%
+                        if(today.plusDays(plusDaysBody).getDayOfWeek().equals(DayOfWeek.SATURDAY)){
+                            plusDaysBody++;
+                        }else if (today.plusDays(plusDaysBody).getDayOfWeek().equals(DayOfWeek.SUNDAY)){
+                            plusDaysBody = plusDaysBody + 3;
+                        }else{
+                            plusDaysBody++;
+                        }
+                        }
                     %>
-                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>
-                    <%}else {%>
-                        <th scope="col"><%=today.plusDays(plusDays).getDayOfWeek()%></th>
-                    <% plusDays++;}%>
-                    <%}%>
-                  <th>
-                      <div class="col-12">
-                           <button class="badge badge-pill badge-primary">Name</button>
-                      </div>
-                      <div class="col-12">
-                        <button class="badge badge-pill badge-primary">Full Name</button>   
-                      </div>
-                      <div class="col-12">
-                          <button class="badge badge-pill badge-primary">Longer Name</button>
-                      </div>
-                  </th>
-                  <th>
-                      <div class="col-12">
-                           <button class="badge badge-pill badge-primary">Name</button>
-                      </div>
-                      <div class="col-12">
-                        <button class="badge badge-pill badge-primary">Full Name</button>   
-                      </div>
-                      <div class="col-12">
-                          <button class="badge badge-pill badge-primary">Longer Name</button>
-                      </div>
-                  </th>
                   
                 </tr>
                <%}%>
