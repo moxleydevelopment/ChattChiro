@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -17,7 +18,7 @@ import java.util.Map;
  */
 public class DoctorFactory {
     public Map<String, Doctor> getDoctors() throws Exception {
-        Map<String, Doctor> doctorMap = new HashMap<String, Doctor>();
+        Map<String, Doctor> doctorMap = new LinkedHashMap<String, Doctor>();
         try {
             Connection con;
             Class.forName("org.postgresql.Driver");
@@ -34,7 +35,7 @@ public class DoctorFactory {
             System.out.println("Connected to DB.");
 
             Statement statement = con.createStatement();
-            String sql = "SELECT * FROM \"Chiropractor\"";
+            String sql = "SELECT * FROM \"Chiropractor\" ORDER BY id ASC";
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
                 String doctId = rs.getString(1);

@@ -220,7 +220,7 @@ input - Specifies a input field for user to enter information (Id, Password).
                                   </table>
                                 </div>
                               </div>
-                              <button type="submit" class="btn btn-primary">Update Schedules</button>
+                              <button type="submit" class="btn btn-primary">Update Schedules</button><% if (request.getAttribute("availabilityChanged") == "success") { %> <p class="text-success d-inline">Schedule updated.</p> <% } %>
                             </div>
                           </form>
                         </div>
@@ -239,7 +239,7 @@ input - Specifies a input field for user to enter information (Id, Password).
                               </div>
                               <div class="form-group">
                                 <label for="chiroPwd">Password</label>
-                                <input name='chiroPwd' type="text" class="form-control" id="chiroPwd" aria-describedby="chiroPwd">
+                                <input name='chiroPwd' type="password" class="form-control" id="chiroPwd" aria-describedby="chiroPwd">
                               </div>
                               <div class="form-group">
                                 <label for="chiroFName">First Name</label>
@@ -259,6 +259,8 @@ input - Specifies a input field for user to enter information (Id, Password).
                                   aria-describedby="chiroOfficeNum">
                               </div>
                               <button type="submit" class="btn btn-primary">Add Chiropractor</button>
+                              <% if (request.getAttribute("chiropractorAdded") == "success") { %> <p class="text-success d-inline">Chiropractor added.</p> <% } %>
+                              <% if (request.getAttribute("chiropractorAdded") == "failed") { %> <p class="text-danger d-inline">Failed to add chiropractor.</p> <% } %>
                             </div>
                           </form>
                         </div>

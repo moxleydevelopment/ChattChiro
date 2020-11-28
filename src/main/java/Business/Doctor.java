@@ -117,13 +117,16 @@ public class Doctor {
     
     /**
      * Creates a new row in the database table.
-     * @param IDIn A string representing the doctor's ID.
-     * @param pwdIn A string representing the doctor's password.
-     * @param nameIn A string representing the doctor's name.
-     * @param emailIn A string representing the doctor's email address.
+     * 
+     * @param IDIn        A string representing the doctor's ID.
+     * @param pwdIn       A string representing the doctor's password.
+     * @param nameIn      A string representing the doctor's name.
+     * @param emailIn     A string representing the doctor's email address.
      * @param officeNumIn A string representing the doctor's office number.
+     * @throws Exception
      */
-    public void insertDB(String IDIn, String pwdIn, String firstNameIn, String lastNameIn, String emailIn, String officeNumIn){
+    public void insertDB(String IDIn, String pwdIn, String firstNameIn, String lastNameIn, String emailIn,
+            String officeNumIn) throws Exception {
         try {
             Connection con;
             Class.forName("org.postgresql.Driver");
@@ -142,7 +145,7 @@ public class Doctor {
             statement.execute(sql);  
             con.close();
         } catch (Exception e){
-            System.out.println(e);
+            throw(e);
         }  
     }
     
