@@ -41,10 +41,12 @@ public class SetAppointmentServlet extends HttpServlet {
             patientId = request.getParameter("patientId");
             timeSlot = Integer.parseInt(request.getParameter("timeSlot"));
             Appointment a1 = new Appointment();
-            a1.insertDB(apptDate, patientId, patientId, timeSlot);
+            a1.insertDB(apptDate, patientId, doctorId, timeSlot);
+            
             RequestDispatcher rd = request.getRequestDispatcher("/patients/patient.jsp");
             rd.forward(request, response);
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

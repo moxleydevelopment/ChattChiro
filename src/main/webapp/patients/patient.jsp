@@ -24,6 +24,7 @@ Using getAttribute method to retrieve Patient data.
  <% 
             Patient p1;
             p1 = (Patient)session.getAttribute("p1");
+            p1.getAppointments();
 
            
 %>

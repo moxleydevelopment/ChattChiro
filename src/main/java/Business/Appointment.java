@@ -179,7 +179,7 @@ public class Appointment {
                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                 }
             Statement statement = con.createStatement();
-            String sql = String.format("INSERT INTO \"Appointments\" VALUES ('%s', '%s', '%s', '%s');", inputApptDate, inputTimeSlot, inputPatId, inputDoctId);
+            String sql = String.format("INSERT INTO \"Appointments\" VALUES ('%s', '%s', '%s', '%s');",inputDoctId , inputPatId, inputApptDate, inputTimeSlot);
             System.out.println("SQL String: " + sql);
             statement.execute(sql);  
             con.close();
