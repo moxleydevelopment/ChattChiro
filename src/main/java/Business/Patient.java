@@ -242,7 +242,7 @@ public class Patient {
           
 
             Statement statement = con.createStatement();
-            String sql = "SELECT * FROM \"Appointments\" WHERE \"patientID\" = '" + patId + "' ORDER BY timeslot ASC";
+            String sql = "SELECT * FROM \"Appointments\" WHERE \"patientID\" = '" + patId + "' ORDER BY date ASC, timeslot ASC";
             
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
