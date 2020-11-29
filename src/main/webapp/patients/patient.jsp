@@ -5,6 +5,11 @@ Team 3
 ChattChiro - Chiropractors
 --%>
 
+
+<%@page import="java.util.Map"%>
+<%@page import="Business.Doctor"%>
+<%@page import="Business.DoctorFactory"%>
+<%@page import="java.time.LocalDate"%>
 <%-- 
     Document   : patient
     Created on : Oct 11, 2020, 5:49:24 PM
@@ -25,6 +30,9 @@ Using getAttribute method to retrieve Patient data.
             Patient p1;
             p1 = (Patient)session.getAttribute("p1");
             p1.getAppointments();
+            LocalDate today = LocalDate.now();
+            DoctorFactory doctorFactory = new DoctorFactory();
+             Map<String, Doctor> doctorMap = doctorFactory.getDoctors();
 
            
 %>
@@ -129,10 +137,17 @@ class - Specifies classname for element.
             </div>
         </div>
         <div class="row row-cols-4 my-2">
-            <div class="col">Column</div>
-            <div class="col">Column</div>
-            <div class="col">Column</div>
-            <div class="col">Column</div>
+            <%
+                for(int x = 0; x < p1.appointmentList.size(); x++){
+                    
+                  if (LocalDate.parse(p1.appointmentList.get(x).getDate()).isAfter(today)){
+                
+            %>
+            <div class="col"><%=doctorMap.get(p1.appointmentList.get(x).getDoctor()).getFullName()%></div>
+            <div class="col"><%=p1.appointmentList.get(x).getDate()%></div>
+            <div class="col"><%=p1.appointmentList.get(x).getFormattedTimeslot() %></div>
+            <div class="col"><button class="btn btn-warning">Change/Edit</button></div>
+            <%}}%>
         </div>       
         <table class="table">
           <thead class="thead-light">
@@ -146,7 +161,7 @@ class - Specifies classname for element.
           <tbody>
             <%for (int count = 0; count < p1.appointmentList.size(); count++){ %>
               <tr>
-                <th scope="row"><%=p1.appointmentList.get(count).getDoctor()%></th>
+                <th scope="row"><%=doctorMap.get(p1.appointmentList.get(count).getDoctor()).getFullName()%></th>
                 <td><%=p1.appointmentList.get(count).getDate()%></td>
                 <td><%=p1.appointmentList.get(count).getFormattedTimeslot()%></td>
                 <td><%=p1.appointmentList.get(count).getProcedure()%></td>
