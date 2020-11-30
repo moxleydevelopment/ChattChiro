@@ -86,7 +86,7 @@ public class Doctor {
                  } else {
                      con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                  }
-            System.out.println("Connected to DB.");
+            //System.out.println("Connected to DB.");
             
             Statement statement = con.createStatement();
             String sql = "SELECT * FROM \"Chiropractor\" where id = '" + id + "'";
@@ -165,7 +165,7 @@ public class Doctor {
                 }else{
                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                 }
-            System.out.println("Connected to DB.");
+            //System.out.println("Connected to DB.");
             
             Statement statement = con.createStatement();
             String sql = String.format("DELETE FROM \"Chiropractor\" WHERE id = '%s';", doctId);
@@ -225,7 +225,7 @@ public class Doctor {
                      con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                  }
 
-            System.out.println("Connected to DB.");
+            //System.out.println("Connected to DB.");
 
             Statement statement = con.createStatement();
             String sql = "SELECT DISTINCT \"patientID\" FROM \"Appointments\" WHERE \"doctID\" = '" + doctId + "'";
@@ -258,7 +258,7 @@ public class Doctor {
                      con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                  }
 
-            System.out.println("Connected to DB.");
+            //System.out.println("Connected to DB.");
 
             Statement statement = con.createStatement();
             String sql = "SELECT * FROM \"Appointments\" WHERE \"doctID\" = '" + doctId + "' AND date = '" + inputDate + "' ORDER BY timeslot ASC";

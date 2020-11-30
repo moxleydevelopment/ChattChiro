@@ -131,7 +131,7 @@
                     }
                   }
                   endDate = startDate.plusDays(x-1);
-                  System.out.println(endDate);
+                  //System.out.println(endDate);
                   Map<String, Map<String, Boolean>> availableMap = Availability.getAvailabilityBetweenDates(startDate, endDate);
                   Map<String, Map<String, Map<Integer, Boolean>>> appointmentsMap = Appointment.getAppointmentsBetweenDates(startDate, endDate);
                   %>
@@ -154,7 +154,7 @@
                   <th class="text-center">
                     <% for(Map.Entry<String, Map<String, Boolean>> entry : availableMap.entrySet()){
                         String docID = entry.getKey();
-                        System.out.println(docID);
+                        //System.out.println(docID);
                         Doctor curDoctor = doctorMap.get(docID);
                         String docName = "";
                         Boolean docAvailable = false;

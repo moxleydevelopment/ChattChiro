@@ -130,7 +130,7 @@ public class Appointment {
                  }else{
                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                  }
-            System.out.println("Connected to DB.");
+            //System.out.println("Connected to DB.");
             
             Statement statement = con.createStatement();
             String sql = "SELECT * FROM \"Appointments\" where date BETWEEN '" + startDate + "' AND '" + endDate + "'";

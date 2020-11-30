@@ -32,7 +32,7 @@ public class DoctorFactory {
                      con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                  }
 
-            System.out.println("Connected to DB.");
+            //System.out.println("Connected to DB.");
 
             Statement statement = con.createStatement();
             String sql = "SELECT * FROM \"Chiropractor\" ORDER BY id ASC";

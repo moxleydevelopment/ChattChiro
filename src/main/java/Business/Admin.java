@@ -82,7 +82,7 @@ public class Admin {
                  }else{
                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                  }
-            System.out.println("Connected to DB.");
+            //System.out.println("Connected to DB.");
             
             Statement statement = con.createStatement();
             String sql = "SELECT * FROM \"Admin\" where id = '" + id + "'";
@@ -159,7 +159,7 @@ public class Admin {
                 }else{
                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                 }
-            System.out.println("Connected to DB.");
+            //System.out.println("Connected to DB.");
             
             Statement statement = con.createStatement();
             String sql = String.format("DELETE FROM \"Admin\" WHERE id = '%s';", adminId);

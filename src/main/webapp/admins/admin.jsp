@@ -170,7 +170,7 @@ input - Specifies a input field for user to enter information (Id, Password).
                                           }
                                         }
                                         endDate = startDate.plusDays(x-1);
-                                        System.out.println(endDate);
+                                        //System.out.println(endDate);
                                         Map<String, Map<String, Boolean>> availableMap = Availability.getAvailabilityBetweenDates(startDate, endDate);
                                       %>
 
