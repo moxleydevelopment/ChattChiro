@@ -252,7 +252,7 @@ public class Patient {
                 String timeslot = rs.getString(4);
                 String procedure = rs.getString(5);
                 Appointment newAppointmnt = new Appointment(date, patientID, doctID, timeslot, procedure);
-                System.out.println("adding to apptlist + " + date + " " + doctID + " " + patientID);
+                //System.out.println("adding to apptlist + " + date + " " + doctID + " " + patientID);
                 appointmentList.add(newAppointmnt);
             }
             con.close();
