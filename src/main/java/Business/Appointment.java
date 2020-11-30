@@ -71,8 +71,7 @@ public class Appointment {
         return timeSlot;
     }
 
-    public String  
-    {
+    public String getProcedure(){
         return procedure;
     }
     
