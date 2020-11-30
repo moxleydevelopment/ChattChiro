@@ -243,11 +243,14 @@ public class Appointment {
             Connection con;
             Class.forName("org.postgresql.Driver");
             if( "/app".equals(System.getenv("HOME"))){
-                    //System.getenv("JDBC_DATABASE_URL");
-                    con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
-                }else{
-                    con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
-                }
+                URI dbUri = new URI(System.getenv("DATABASE_URL"));
+                String username = dbUri.getUserInfo().split(":")[0];
+                String dbPassword = dbUri.getUserInfo().split(":")[1];
+                String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+                con = DriverManager.getConnection(dbUrl, username, dbPassword);
+             }else{
+                con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
+             }
             Statement statement = con.createStatement();
             String sql = String.format("INSERT INTO \"Appointments\" VALUES ('%s', '%s', '%s', '%s', '%s');",inputDoctId , inputPatId, inputApptDate, inputTimeSlot, "Adjustment");
             System.out.println("SQL String: " + sql);
