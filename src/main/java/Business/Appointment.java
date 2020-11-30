@@ -12,6 +12,12 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
+import java.lang.Integer;
+import java.net.URI;
+import java.sql.ResultSet;
 
     /**
      * The {@code Appointment} class is a data model for appointments. 
@@ -98,6 +104,70 @@ public class Appointment {
         String apptTimeString = apptStartTime.format(formatter) + "-" + apptEndTime.format(formatter);
         return apptTimeString;
     }
+
+    public static String formatTimeSlot(int inputTimeSlot){
+        LocalTime apptStartTime = LocalTime.parse("07:00");
+        LocalTime apptEndTime;
+        int loopCount = inputTimeSlot - 1;
+        for (int i = 0; i < loopCount; i++){
+            apptStartTime = apptStartTime.plusMinutes(30);
+        }
+        apptEndTime = apptStartTime.plusMinutes(30);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
+        String apptTimeString = apptStartTime.format(formatter) + "-" + apptEndTime.format(formatter);
+        return apptTimeString;
+    }
+
+    public static Map<String, Map<String, Map<Integer, Boolean>>> getAppointmentsBetweenDates(LocalDate startDate, LocalDate endDate) throws Exception{
+        try {
+            Connection con;
+            Class.forName("org.postgresql.Driver");
+             if( "/app".equals(System.getenv("HOME"))){
+                    URI dbUri = new URI(System.getenv("DATABASE_URL"));
+                    String username = dbUri.getUserInfo().split(":")[0];
+                    String dbPassword = dbUri.getUserInfo().split(":")[1];
+                    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+                    con = DriverManager.getConnection(dbUrl, username, dbPassword);
+                 }else{
+                    con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
+                 }
+            System.out.println("Connected to DB.");
+            
+            Statement statement = con.createStatement();
+            String sql = "SELECT * FROM \"Appointments\" where date BETWEEN '" + startDate + "' AND '" + endDate + "'";
+            Map<String, Map<String, Map<Integer, Boolean>>> appointmentsMap = new HashMap<String, Map<String, Map<Integer, Boolean>>>();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                String docID = rs.getString(1);
+                String date = rs.getString(3);
+                Integer timeslot = rs.getInt(4);
+
+                if (appointmentsMap.containsKey(docID)){
+                    if (appointmentsMap.get(docID).containsKey(date)){
+                        appointmentsMap.get(docID).get(date).put((Integer)timeslot, true);
+                        //<DoctorID, <Date, <Timeslot, true>>
+                        //<String, <String, <Int, Boolean>>
+                    } else {
+                        appointmentsMap.get(docID).put(date, new HashMap<Integer, Boolean>());
+                        appointmentsMap.get(docID).get(date).put((Integer)timeslot, true);
+
+                    }
+                } else {
+                    appointmentsMap.put(docID, new HashMap<String, Map<Integer, Boolean>>());
+                    appointmentsMap.get(docID).put(date, new HashMap<Integer, Boolean>());
+                    appointmentsMap.get(docID).get(date).put((Integer)timeslot, true);
+                }
+            }
+            return appointmentsMap;
+            
+        } catch (Exception e){
+            if (e.toString().contains("ResultSet is empty")) {
+            } else {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
     
     /**
      * Sets the timeslot.
@@ -180,7 +250,7 @@ public class Appointment {
                     con = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "postgres", "root");
                 }
             Statement statement = con.createStatement();
-            String sql = String.format("INSERT INTO \"Appointments\" VALUES ('%s', '%s', '%s', '%s');",inputDoctId , inputPatId, inputApptDate, inputTimeSlot);
+            String sql = String.format("INSERT INTO \"Appointments\" VALUES ('%s', '%s', '%s', '%s', '%s');",inputDoctId , inputPatId, inputApptDate, inputTimeSlot, "Adjustment");
             System.out.println("SQL String: " + sql);
             statement.execute(sql);  
             con.close();

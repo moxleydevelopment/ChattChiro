@@ -55,68 +55,93 @@ input - Specifies input field for user to enter data (Textbox).
 form action - On button submition will send form data to the specified servlet.
 button - Defines a clickable button for user to click and submit data.
 --%>
-        <div class='row '>
-          <nav class="navbar navbar-light bg-light col-12 shadow  py-0">
-              <a href="index.html" class="navbar-brand">ChattChiro</a>
-              <button class="btn btn-info" >Login Out</button>
-          </nav>
-        </div>
-        <div class="row justify-content-center mt-5" style="background-image: linear-gradient(to bottom right, blue, green);">
-          <div class="col-1 bg-white py-2">
-            <a class="nav-link active" href="index.html">HOME</a>
+        <div id="index_container" class='container-fluid'>
+          <div class='row'>
+                  <nav class="navbar navbar-light bg-light col-12 shadow py-2">
+                      <a href="index.html" class="navbar-brand">ChattChiro</a>
+                  </nav>
+          </div> 
+          <div class="row bg-white mt-4 ">
+              <div class="col-4 text-center">
+                  <a href="index.html"><img src="../images/home_logo.png" class="img-fluid" alt="Responsive image"></a>
+              </div>
+              <div class="col-4 ">
+                  <div class="row no-gutters align-items-center" style="min-height:150px;">
+                      <div class="col-md-2 text-info">
+                          <i class="fas fa-phone-alt fa-3x"></i>
+                      </div>
+                      <div class="col-md-8">
+                          <p class="mb-0"><span class="text-info">Free Call</span> +1 234 456 78910</p>
+                          <p class=""><small class="text-muted">Call Us Now 24/7 Customer Support</small></p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-4">
+                  <div class="row no-gutters align-items-center" style="min-height:150px;">
+                      <div class="col-md-2 text-info">
+                          <i class="fas fa-clinic-medical fa-3x"></i>
+                      </div>
+                      <div class="col-md-8">
+                            <p class="mb-0">Our Location</p>
+                            <p class=""><small class="text-muted">198 Enz Street, Marietta GA 30060</small></p>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="col-1 py-2">
-            <a class="nav-link text-light" href="about.html">ABOUT</a>
+          <div class="row justify-content-center" style="background-image: linear-gradient(to bottom right, blue, green);">
+              <div class="col-1 py-2">
+                <a class="nav-link text-light" href="../index.html">HOME</a>
+              </div>
+              <div class="col-1 py-2">
+                <a class="nav-link text-light" href="../about.html">ABOUT</a>
+              </div>
+              <div class="col-1 py-2">
+                <a class="nav-link text-light" href="../services.html">SERVICES</a>
+              </div>
+              <div class="col-1 py-2">
+                <a class="nav-link text-light" href="../doctors.html">DOCTORS</a>
+              </div>
+              <div class="col-1 py-2">
+                <a class="nav-link text-light" href="../faq.html">FAQ</a>
+              </div>
+              <div class="col-1 py-2">
+                <a class="nav-link text-light" href="../contact.html">CONTACT</a>
+              </div>
           </div>
-          <div class="col-1 py-2">
-            <a class="nav-link text-light" href="services.html">SERVICE</a>
-          </div>
-          <div class="col-1 py-2">
-            <a class="nav-link text-light" href="doctors.html">DOCTORS</a>
-          </div>
-          <div class="col-1 py-2">
-            <a class="nav-link text-light" href="pricing.html">PRICING</a>
-          </div>
-          <div class="col-1 py-2">
-            <a class="nav-link text-light" href="faq.html">FAQ</a>
-          </div>
-          <div class="col-1 py-2">
-            <a class="nav-link text-light" href="contact.html">CONTACT</a>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='col-6 p-5'>
-            <form action="../PatientUpdateServlet" class="card " method='post'> 
-                    <div class="card-header">
-                      Profile Update
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                           <input name='customerId' type="hidden" class="form-control" id="customerId" value="<%=p1.getID()%>">
-                        </div> 
-                        <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="text" name="password" class="form-control" value="<%=p1.getPwd()%>">
-                        </div>
-                        <div class="form-group">
-                          <label for="firstName">First Name</label>
-                          <input type="text" name="firstName" class="form-control" value="<%=p1.getFirstName()%>">
-                        </div>
-                        <div class="form-group">
-                          <label for="lastName">Last Name</label>
-                          <input type="text" name="lastName" class="form-control" value="<%=p1.getLastName()%>">
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Email</label>
-                          <input type="email" name="email" class="form-control" value="<%=p1.getEmail()%>">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </div>       
-            </form>
-          </div>
-          <div class='col-6'>
-            <img src="../images/update_image.png" alt="">
-          </div>
-        </div>    
+          <div class='row pt-4'>
+            <div class='col-6 p-5'>
+              <form action="../PatientUpdateServlet" class="card " method='post'> 
+                      <div class="card-header">
+                        Profile Update
+                      </div>
+                      <div class="card-body">
+                          <div class="form-group">
+                            <input name='customerId' type="hidden" class="form-control" id="customerId" value="<%=p1.getID()%>">
+                          </div> 
+                          <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="text" name="password" class="form-control" value="<%=p1.getPwd()%>">
+                          </div>
+                          <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" name="firstName" class="form-control" value="<%=p1.getFirstName()%>">
+                          </div>
+                          <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" name="lastName" class="form-control" value="<%=p1.getLastName()%>">
+                          </div>
+                          <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" value="<%=p1.getEmail()%>">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Update</button>
+                      </div>       
+              </form>
+            </div>
+            <div class='col-6'>
+              <img src="../images/update_image.png" alt="">
+            </div>
+          </div> 
+        </div>  
     </body>
 </html>

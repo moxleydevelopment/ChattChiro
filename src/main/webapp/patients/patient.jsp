@@ -120,56 +120,77 @@ class - Specifies classname for element.
               <a class="nav-link text-light" href="contact.html">CONTACT</a>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-auto text-center">
-                <img src="<%=p1.getInitials()%>" alt="profile initials">
+        <div class="row justify-content-center">
+          <div class="col-10 mt-4 mb-4 card px-5">
+            <div class="row mt-4 pb-4">
+                <div class="col-auto text-center">
+                    <img src="<%=p1.getInitials()%>" alt="profile initials">
+                </div>
+                <div class="col-6">
+                    <div class="col-12"><h class='h1'>Hello <%=p1.getFirstName()%> <%=p1.getLastName()%> </h></div>
+                    <div class="col-6"><h class='h6'>Customer ID: <%=p1.getID()%></h></div>
+                    <div class="col-6"><h class='h6'>Password: <%=p1.getPwd()%></h></div>
+                    <div class="col-12"><h class='h6'>Email: <%=p1.getEmail()%></h></div> 
+                </div>
+                <div class="col-auto">
+                    <a href="./patients/updatepatient.jsp"  class="btn btn-info">Update Profile</a>
+                    <a href="./patients/bookappointment.jsp" class="btn btn-info">Book Appointment</a>
+                </div>
             </div>
-            <div class="col-6">
-                <div class="col-12"><h class='h1'>Hello <%=p1.getFirstName()%> <%=p1.getLastName()%> </h></div>
-                <div class="col-6"><h class='h6'>Customer ID: <%=p1.getID()%></h></div>
-                <div class="col-6"><h class='h6'>Password: <%=p1.getPwd()%></h></div>
-                <div class="col-12"><h class='h6'>Email: <%=p1.getEmail()%></h></div> 
+            <div class="row">
+              <h2>Upcoming Appointments</h2>
+              <table class="table">
+                <thead class="thead-light">
+                  <th scope="col">Doctor</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Procedure</th>
+                </thead>
+                <tbody>
+                  <%
+                      for(int x = 0; x < p1.appointmentList.size(); x++){
+                          
+                        if (LocalDate.parse(p1.appointmentList.get(x).getDate()).isAfter(today) || LocalDate.parse(p1.appointmentList.get(x).getDate()).isEqual(today)){
+                      
+                  %>
+                  <tr>
+                    <th scope="row"><%=doctorMap.get(p1.appointmentList.get(x).getDoctor()).getFullName()%></th>
+                    <td><%=p1.appointmentList.get(x).getDate()%></td>
+                    <td><%=p1.appointmentList.get(x).getFormattedTimeslot()%></td>
+                    <td><%=p1.appointmentList.get(x).getProcedure()%></td>
+                  </tr>
+                  <%}}%>
+                </tbody>
+              </table>
             </div>
-            <div class="col-auto">
-                <a href="./patients/updatepatient.jsp"  class="btn btn-info">Update Profile</a>
-                <a href="./patients/bookappointment.jsp" class="btn btn-info">Book Appointments</a>
-                <a href="" class="btn btn-info">View History</a>
-            </div>
-        </div>
-        <div class="row row-cols-4 my-2">
-            <%
-                for(int x = 0; x < p1.appointmentList.size(); x++){
-                    
-                  if (LocalDate.parse(p1.appointmentList.get(x).getDate()).isAfter(today)){
-                
-            %>
-            <div class="col"><%=doctorMap.get(p1.appointmentList.get(x).getDoctor()).getFullName()%></div>
-            <div class="col"><%=p1.appointmentList.get(x).getDate()%></div>
-            <div class="col"><%=p1.appointmentList.get(x).getFormattedTimeslot() %></div>
-            <div class="col"><button class="btn btn-warning">Change/Edit</button></div>
-            <%}}%>
-        </div>       
-        <table class="table">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">Doctor</th>
-              <th scope="col">Date</th>
-              <th scope="col">Time</th>
-              <th scope="col">Procedure</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%for (int count = 0; count < p1.appointmentList.size(); count++){ %>
-              <tr>
-                <th scope="row"><%=doctorMap.get(p1.appointmentList.get(count).getDoctor()).getFullName()%></th>
-                <td><%=p1.appointmentList.get(count).getDate()%></td>
-                <td><%=p1.appointmentList.get(count).getFormattedTimeslot()%></td>
-                <td><%=p1.appointmentList.get(count).getProcedure()%></td>
-              </tr>
-           <%}%>
+            <div class="row">
+              <h2>Past Appointments</h2>   
+              <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Doctor</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Procedure</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%for (int count = 0; count < p1.appointmentList.size(); count++){
+                    if (LocalDate.parse(p1.appointmentList.get(count).getDate()).isBefore(today)){ %>
+                    <tr>
+                      <th scope="row"><%=doctorMap.get(p1.appointmentList.get(count).getDoctor()).getFullName()%></th>
+                      <td><%=p1.appointmentList.get(count).getDate()%></td>
+                      <td><%=p1.appointmentList.get(count).getFormattedTimeslot()%></td>
+                      <td><%=p1.appointmentList.get(count).getProcedure()%></td>
+                    </tr>
+                  <%}
+                  }%>
 
-          </tbody>
-        </table>    
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
     </div>
         
 <%-- Script points to external script file through src attribute to URL --%>

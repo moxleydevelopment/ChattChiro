@@ -82,7 +82,7 @@ input - Specifies a input field for user to enter information (Id, Password).
 -->
     <body >
         <div id="index_container" class='container-fluid'>
-            <div class='row '>
+            <div class='row'>
                 <nav class="navbar navbar-light bg-light col-12 shadow  py-2">
                     <a href="index.html" class="navbar-brand">ChattChiro</a>
                 </nav>
